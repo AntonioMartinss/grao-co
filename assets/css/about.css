@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+:root{
+
+    /* colors */
+    --background: #1A1A1A;
+    /* fonts */
+    --body-font-mono: "JetBrains Mono", monospace;
+    --body-font: "JetBrains", monospace;
+}
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+
+html{
+    font-family: var(--body-font-mono);
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    flex-direction: column;
+    
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-radius: 10px;
+    background-color: var(--background);
+    color: #FFF;
+    padding: 20px;
+    width: 80%;
+}
+.container-img{
+    width: 55%;
+}
+
+.container-img img{
+    max-width: 100%;
+    height: 100%; 
+   border-radius: 10px;
+
+}
+
+.container-message{
+    padding: 10px;
+    font-size: 20px;
+    width: 55%;
+}
+.mission{
+    width: 80%;
+
+} 
+
+.mission {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+  }
+  .mission h4 {
+    margin-bottom: 10px;
+  }
+  .mission p {
+    color: #666;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .e-commerce{
+    width: 80%;
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    color: #000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .e-commerce p{
+    text-align: left;
+    
+  }
+
+  
+  
+ 
