@@ -40,6 +40,11 @@ public function __construct()
     {
         echo $this->view->render("shop",[]);
     }
+
+    public function admin ()
+    {
+        echo $this->view->render("admin",[]);
+    }
    
 
     public function error (array $data)

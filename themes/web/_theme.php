@@ -44,7 +44,7 @@
                   </div>
                 <div class="footer-social">
                     <ul>
-                        <li><a href="www.linkedin.com/in/antoniomsouza2/" target="_blank"><i class="fab fa-linkedin"></i></i></a></li>
+                        <li><a href="http://linkedin.com/in/antoniomsouza2/" target="_blank"><i class="fab fa-linkedin"></i></i></a></li>
                         <li><a href="https://github.com/AntonioMartinss/" target="_blank"><i class="fa-brands fa-github" style="color: #ffffff;"></i></a></li>
                     </ul>
                 </div>

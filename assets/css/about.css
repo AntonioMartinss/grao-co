@@ -19,6 +19,7 @@
 
 html{
     font-family: var(--body-font-mono);
+    user-select:none
 }
 
 main{

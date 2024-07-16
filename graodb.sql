@@ -34,12 +34,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `grao-co`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `user` VARCHAR(255) NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
-  `password` VARCHAR(20) NOT NULL,
-  `url` VARCHAR(255) NOT NULL,
-  `plans_id` INT NOT NULL,
-  `usersCategories_id` INT NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `url` VARCHAR(255) ,
+  `plans_id` INT ,
+  `usersCategories_id` INT ,
   PRIMARY KEY (`id`),
   INDEX `fk_users_plans_idx` (`plans_id` ASC),
   INDEX `fk_users_usersCategories1_idx` (`usersCategories_id` ASC),

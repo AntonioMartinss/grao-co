@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/login.css">
     <script src="https://kit.fontawesome.com/e9ad9d0028.js" crossorigin="anonymous"></script>
+    <script src="assets/js/login.js" async></script>
+    
     <title>Entrar</title>
 </head>
 
@@ -22,7 +24,7 @@
                 <div class="form-img">
                     <img src="assets/images/login-image.svg" alt="user-image" />
                 </div>
-                <form>
+                <form id="formLogin">
                         <span>Já é cliente? Faça o login.</span>
                     <input type="email" name="email" id="" placeholder="E-mail" />
                     <input type="password" name="password" placeholder="Senha">

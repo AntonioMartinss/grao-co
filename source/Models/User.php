@@ -94,8 +94,8 @@ class User extends Model {
 
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO users (name, email, password) 
-                  VALUES (:name, :email, :password)";
+        $query = "INSERT INTO users (name, email, password, usersCategories_id) 
+                  VALUES (:name, :email, :password, 1)";
 
         $stmt = $conn->prepare($query);
         $stmt->bindParam(":name", $this->name);
@@ -135,6 +135,37 @@ class User extends Model {
         $this->setEmail($result->email);
 
         $this->message = "Usuário logado com sucesso!";
+
+        return true;
+
+    }
+    public function loginAdmin(string $email, string $password): bool
+    {
+        $userCategory = 2;
+
+        $query = "SELECT * FROM users WHERE email = :email AND usersCategories_id = :userCategory";
+        $conn = Connect::getInstance();
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(":userCategory", $userCategory);
+        $stmt->bindParam(":email", $email);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        
+        if (!$result) {
+            $this->message = "Usuário não é um administrador!";
+            return false;
+        }
+
+        if (!password_verify($password, $result->password)) {
+            $this->message = "Senha incorreta!";
+            return false;
+        }
+
+        $this->setId($result->id);
+        $this->setName($result->name);
+        $this->setEmail($result->email);
+
+        $this->message = "Administrador logado!";
 
         return true;
 

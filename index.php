@@ -17,6 +17,7 @@ $route->get("/entrar", "Web:login");
 $route->get("/cadastro", "Web:register");
 $route->get("/loja", "Web:shop");
 $route->get("/sobre", "Web:about");
+$route->get("/admin", "Web:admin");
 
 
 
