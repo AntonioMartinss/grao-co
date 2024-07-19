@@ -37,6 +37,34 @@
 
 # Executar
 
-### Requisitos
+## Requisitos
 
-- Em breve tutorial
+ ### XAMPP APACHE
+
+ > <a href="https://www.apachefriends.org/pt_br/index.html">Baixar o xampp apache</a>
+
+ ### Banco de dados
+
+ > <a href="https://dev.mysql.com/downloads/workbench/">Baixar Workbench MySql</a>
+
+    Ou acessar pelo phpmyadmin, através do xampp na barra de pesquisa após iniciar o xampp, pesquise por localhost/phpmyadmin.
+
+### Baixar repositório
+
+    Você pode baixar este repositório através do comando:
+
+    git clone https://github.com/AntonioMartinss/grao-co.git
+
+ ### Como executar
+
+    Para Executar o projeto, basta adicionalo a pasta htdocs do xampp em seu disco C:/
+    
+    Crie uma pasta chamada "grao-co" e adicione os arquivos que você baixou do repositório
+
+    Após isso, basta acessar o localhost/grao-co/ no seu navegador e pronto, fique a vontade para testar todas as funcionalidades atuais do projeto!!!
+
+    Lembre sempre de deixar as opções apache e mysql do xampp ativas para não ocorrer erros.
+ 
+
+
+
