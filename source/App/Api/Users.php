@@ -2,8 +2,10 @@
 
 namespace Source\App\Api;
 
-use Source\Models\User;
+// Introduzindo token de segurança
 
+use Source\Models\User;
+use Source\Core\TokenJWT;
 
 class Users extends Api
 {
@@ -47,78 +49,59 @@ class Users extends Api
         ]);
 
     }
-    public function loginUser (array $data)
-    {
-        if(in_array("", $data)) {
+    public function loginUser (array $data) {
+        $user = new User();
+
+        if(!$user->login($data["email"],$data["password"])){
             $this->back([
                 "type" => "error",
-                "message" => "Preencha todos os campos"
+                "message" => $user->getMessage()
             ]);
             return;
         }
-
-        
-        $user = new User();
-
-        if(!$user->login(
-            $data["email"],
-            $data["password"]))
-            {
-                $this->back([
-                    "type" => "error",
-                    "message" => "Email ou senha inválidos"
-                ]);
-                return;
-            }
-
-            $this->back([
-                "type" => "success",
-                "message" => "Usuário logado!",
-                "user" => [
+        $token = new TokenJWT();
+        $this->back([
+            "type" => "success",
+            "message" => $user->getMessage(),
+            "user" => [
+                "id" => $user->getId(),
+                "name" => $user->getName(),
+                "email" => $user->getEmail(),
+                "token" => $token->create([
                     "id" => $user->getId(),
                     "name" => $user->getName(),
-                    "email" => $user->getEmail()     
-                                   
-                ]
-            ]);
-        
+                    "email" => $user->getEmail()
+                ])
+            ]
+        ]);
 
     }
     public function loginAdmin (array $data)
     {
-        if(in_array("", $data)) {
+        $user = new User();
+
+        if(!$user->loginAdmin($data["email"],$data["password"])){
             $this->back([
                 "type" => "error",
-                "message" => "Preencha todos os campos"
+                "message" => $user->getMessage()
             ]);
             return;
         }
-
-        
-        $user = new User();
-
-        if(!$user->loginAdmin(
-            $data["email"],
-            $data["password"]))
-            {
-                $this->back([
-                    "type" => "error",
-                    "message" => "Email ou senha inválidos"
-                ]);
-                return;
-            }
-
-            $this->back([
-                "type" => "success",
-                "message" => "Administrador logado!",
-                "user" => [
+        $token = new TokenJWT();
+        $this->back([
+            "type" => "success",
+            "message" => $user->getMessage(),
+            "user" => [
+                "id" => $user->getId(),
+                "name" => $user->getName(),
+                "email" => $user->getEmail(),
+                "token" => $token->create([
                     "id" => $user->getId(),
                     "name" => $user->getName(),
                     "email" => $user->getEmail()
-                                   
-                ]
-            ]);
-        
+                ])
+            ]
+        ]);
 
     }
     

@@ -10,11 +10,15 @@ $route = new Router(url(),":");
 
 $route->namespace("Source\App\Api");
 
-$route->get("/faqs","Faqs:listFaqs");
+// Grupo de rotas adicionado
 
-$route->post("/users", "Users:createUser");
-$route->post("/login", "Users:loginUser");
-$route->post("/admin", "Users:loginAdmin");
+$route->group("/users");
+
+$route->post("/","Users:createUser");
+$route->post("/login","Users:loginUser");
+$route->post("/admin","Users:loginAdmin");
+$route->post("/update","Users:updateUser");
+$route->post("/set-password","Users:setPassword");
 
 
 $route->dispatch();
