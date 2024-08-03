@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+:root{
+
+    /* colors */
+    --background: #1A1A1A;
+    /* fonts */
+    --body-font-mono: "JetBrains Mono", monospace;
+    --body-font: "JetBrains", monospace;
+}
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+ 
+  html{
+    scroll-behavior: smooth;
+  }
+  
+ 
+
+  header{
+    font-family: var(--body-font-mono);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+    height: 5em;
+  }
+ .header-name{
+    margin-left: 30px;
+  }
+  header h1{
+    cursor: pointer;
+  }
+  .links ul{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+  }
+  .links li{
+    display: block;
+    margin: 10px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 10px;
+    transition: background-color 0.5s ease;
+  }
+  .links li:hover{
+    background-color: gray;
+    
+  }
+  .icons button{
+    margin-right: 30px;
+    background:none;
+    border: none;
+    cursor: pointer;
+  }
+  .icons i{
+    font-size: 2em;
+  }
+  a{
+    text-decoration: none;
+    color: var(--background);
+  }
+
+/* footer */
+
+  footer {
+    width: 100%; 
+    background-color: var(--background); 
+    color: #fff; 
+    padding: 30px 0; 
+    font-family: var(--body-font-mono);
+  }
+  
+  .footer-container {
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 15px; 
+  }
+  
+  .footer-content {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+  }
+  
+  .footer-logo img {
+    max-width: 120px; 
+    border: solid 2px;
+    border-radius: 360px;
+  }
+  
+  .footer-social ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0; 
+  }
+  
+  .footer-social ul li {
+    display: inline-block; 
+    margin-right: 10px; 
+  }
+  
+  .footer-social ul li:last-child {
+    margin-right: 0; 
+  }
+  
+  .footer-social ul li a {
+    color: #fff; 
+    font-size: 20px; 
+  }
+  
+  .footer-bottom {
+    text-align: center; 
+    margin-top: 20px; 
+  }
+  
+  .footer-bottom p {
+    margin: 0; 
+    font-size: 14px; 
+  }

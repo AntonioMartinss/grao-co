@@ -10,6 +10,6 @@
     <title>Loja</title>
 </head>
 <body>
-    
+
 </body>
 </html>

@@ -10,7 +10,6 @@ $route = new Router(url(),":");
 
 $route->namespace("Source\App\Api");
 
-// Grupo de rotas adicionado
 
 $route->group("/users");
 

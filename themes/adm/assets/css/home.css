@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+:root {
+    /* colors */
+    --background: #1A1A1A;
+    /* fonts */
+    --body-font-mono: "JetBrains Mono", monospace;
+    --body-font: "JetBrains", monospace;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+}
+
+
+main {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+
+main .container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-products {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+form input[type="name"],
+form input[type="number"],
+form input[type="text"],
+form textarea {
+    background-color: transparent;
+    border: 1px solid #CCC;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+}
+
+form input[type="submit"] {
+    width: 100%;
+    background-color: var(--background);
+    border: none;
+    color: #fff;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: var(--body-font);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        height: auto;
+    }
+    aside, main .container {
+        width: 100%;
+    }
+    .form-products {
+        width: 100%;
+    }
+}

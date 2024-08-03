@@ -17,9 +17,26 @@ $route->get("/entrar", "Web:login");
 $route->get("/cadastro", "Web:register");
 $route->get("/loja", "Web:shop");
 $route->get("/sobre", "Web:about");
-$route->get("/admin", "Web:admin");
 
 
+// Rotas amigáveis da área restrita
+$route->group("/app");
+
+$route->get("/", "App:home");
+$route->get("/perfil", "App:profile");
+//$route->get("/carrinho", "App:cart");
+
+$route->group(null);
+
+
+$route->group("/admin");
+
+$route->get("/", "Admin:login");
+$route->get("/inicio", "Admin:home");
+$route->get("/editar-produto", "Admin:edit_product");
+$route->get("/editar-usuario", "Admin:edit_user");
+
+$route->group(null);
 
 $route->get("/ops/{errcode}", "Web:error");
 
