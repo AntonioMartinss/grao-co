@@ -19,12 +19,10 @@ $route->get("/loja", "Web:shop");
 $route->get("/sobre", "Web:about");
 
 
-// Rotas amigáveis da área restrita
 $route->group("/app");
 
-$route->get("/", "App:home");
 $route->get("/perfil", "App:profile");
-//$route->get("/carrinho", "App:cart");
+
 
 $route->group(null);
 

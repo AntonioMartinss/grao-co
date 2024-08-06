@@ -29,9 +29,9 @@
 
         <aside>
             <h3>Acesso Rápido</h3>
-            <ul class="li" onclick="window.location.href = '<?= url("inicio"); ?>'">Adicionar Produto</ul>
-            <ul class="li" onclick="window.location.href = '<?= url("editar-produto"); ?>'">Editar Produto</ul>
-            <ul class="li" onclick="window.location.href = '<?= url("editar-usuario"); ?>'">Editar usuário</ul>
+            <ul class="li" onclick="window.location.href = '<?= url("/admin/inicio"); ?>'">Adicionar Produto</ul>
+            <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-produto"); ?>'">Editar Produto</ul>
+            <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-usuario"); ?>'">Editar usuário</ul>
             <!-- <ul class="li">Avisos</ul> -->
 
         </aside>
