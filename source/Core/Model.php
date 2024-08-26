@@ -30,9 +30,9 @@ abstract class Model
         $query = "SELECT * 
                   FROM {$this->entity}
                   WHERE id = {$id}";
-        return $conn->query($query)->fetchAll();
+        return $conn->query($query)->fetch();
     }
-    public function insert(): ?int
+    public function insertAll(): ?int
     {
         $values = get_object_vars($this);// pegar os valores dos atributos e inserir em um arra
         array_shift($values);

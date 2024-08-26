@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="<?= url("themes/adm/assets/css/_theme.css"); ?>">
     <script src="https://kit.fontawesome.com/e9ad9d0028.js" crossorigin="anonymous"></script>
-    <script src="themes/adm/assets/js/_theme.js" async></script>
 </head>
 
 <body>

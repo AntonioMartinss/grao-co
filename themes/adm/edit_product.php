@@ -10,6 +10,7 @@ $this->layout("_theme");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= url("themes/adm/assets/css/home.css"); ?>">
+    <script src="<?= url("themes/adm/assets/js/editProduct.js"); ?>"></script>
     <title>Editar Produtos</title>
 </head>
 

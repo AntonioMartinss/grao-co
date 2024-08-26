@@ -6,24 +6,34 @@ use PDOException;
 use Source\Core\Connect;
 use Source\Core\Model;
 
-class User extends Model {
+class User extends Model
+{
     private $id;
     private $name;
     private $email;
     private $password;
+    private $url;
+    private $plans_id;
+    private $usersCategories_id;
     private $message;
 
     public function __construct(
         int $id = null,
         string $name = null,
         string $email = null,
-        string $password = null
-    )
-    {
+        string $password = null,
+        string $url = null,
+        int $plans_id = null,
+        int $usersCategories_id = null
+
+    ) {
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
+        $this->url = $url;
+        $this->plans_id = $plans_id;
+        $this->usersCategories_id = $usersCategories_id;
         $this->entity = "users";
     }
 
@@ -66,6 +76,23 @@ class User extends Model {
     {
         $this->password = $password;
     }
+    public function getPlans(): ?int
+    {
+        return $this->plans_id;
+    }
+    public function setPlans(?int $plans_id): void
+    {
+        $this->plans_id = $plans_id;
+    }
+
+    public function getCategoriesId(): ?int
+    {
+        return $this->plans_id;
+    }
+    public function setCategoriesId(?int $usersCategories_id): void
+    {
+        $this->usersCategories_id = $usersCategories_id;
+    }
 
     public function getMessage(): ?string
     {
@@ -77,7 +104,7 @@ class User extends Model {
 
         $conn = Connect::getInstance();
 
-        if(!filter_var($this->email,FILTER_VALIDATE_EMAIL)){
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $this->message = "E-mail Inválido!";
             return false;
         }
@@ -87,7 +114,7 @@ class User extends Model {
         $stmt->bindParam(":email", $this->email);
         $stmt->execute();
 
-        if($stmt->rowCount() == 1) {
+        if ($stmt->rowCount() == 1) {
             $this->message = "E-mail já cadastrado!";
             return false;
         }
@@ -136,8 +163,13 @@ class User extends Model {
 
         $this->message = "Usuário logado com sucesso!";
 
-        return true;
+        session_start();
 
+        $_SESSION['id'] = $result->id;
+        $_SESSION['name'] = $result->name;
+        $_SESSION['email'] = $result->email;
+
+        return true;
     }
     public function loginAdmin(string $email, string $password): bool
     {
@@ -150,7 +182,7 @@ class User extends Model {
         $stmt->bindParam(":email", $email);
         $stmt->execute();
         $result = $stmt->fetch();
-        
+
         if (!$result) {
             $this->message = "Usuário não é um administrador!";
             return false;
@@ -168,15 +200,14 @@ class User extends Model {
         $this->message = "Administrador logado!";
 
         return true;
-
     }
 
 
-    public function update () : bool
+    public function update(): bool
     {
         $conn = Connect::getInstance();
 
-        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $this->message = "E-mail inválido!";
             return false;
         }
@@ -187,7 +218,7 @@ class User extends Model {
         $stmt->bindParam(":id", $this->id);
         $stmt->execute();
 
-        if($stmt->rowCount() == 1) {
+        if ($stmt->rowCount() == 1) {
             $this->message = "E-mail já cadastrado!";
             return false;
         }
@@ -209,10 +240,9 @@ class User extends Model {
             $this->message = "Erro ao atualizar: {$exception->getMessage()}";
             return false;
         }
-
     }
 
-    public function updatePassword (string $password, string $newPassword, string $confirmNewPassword) : bool
+    public function updatePassword(string $password, string $newPassword, string $confirmNewPassword): bool
     {
         $query = "SELECT * FROM users WHERE id = :id";
         $conn = Connect::getInstance();
@@ -249,7 +279,5 @@ class User extends Model {
             $this->message = "Erro ao atualizar: {$exception->getMessage()}";
             return false;
         }
-
     }
-
 }

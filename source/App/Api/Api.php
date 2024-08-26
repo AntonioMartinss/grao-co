@@ -2,19 +2,18 @@
 
 namespace Source\App\Api;
 
-// Introduzindo token de segurança JWT
-
 use Source\Core\TokenJWT;
 
 class Api
 {
     protected $headers;
+    // atributo para armazenar os dados do usuário autenticado
     protected $userAuth = false;
 
     public function __construct()
     {
-        header('Content-Type: application/json; charset=UTF-8');
         $this->headers = getallheaders();
+        header("Content-Type: application/json");
 
         if(!empty($this->headers["token"]) || isset($this->headers["token"])){
             $jwt = new TokenJWT();
@@ -28,6 +27,25 @@ class Api
     {
         http_response_code($code);
         echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+
+    /**
+     * @return void
+     * @description Verifica se o usuário está autenticado
+     */
+    protected function auth (): void
+    {
+        if (!$this->userAuth){
+            $response = [
+                "error" => [
+                    "code" => "401",
+                    "type" => "unauthorized",
+                    "message" => "Usuário não autorizado e/ou token expirado"
+                ]
+            ];
+            $this->back($response, 401);
+            exit();
+        }
     }
 
 }
