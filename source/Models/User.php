@@ -99,6 +99,37 @@ class User extends Model
         return $this->message;
     }
 
+    public function listUsers()
+    {
+
+        $query = "SELECT * FROM users";
+        $conn = Connect::getInstance();
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    public function getUserById(int $id): array
+    {
+        $query = "SELECT 
+                    users.id, 
+                    users.name, 
+                    users.email, 
+                    users.password, 
+                    users.url, 
+                    userscategories.type as 'category_type'
+                  FROM users
+                  INNER JOIN userscategories 
+                  ON users.usersCategories_id = userscategories.id
+                  WHERE users.id = :id";
+        $conn = Connect::getInstance();
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+
     public function insert(): ?int
     {
 

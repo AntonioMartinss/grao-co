@@ -15,6 +15,13 @@ class Users extends Api
         $this->back($users->selectAll());
     }
 
+    public function listById(array $data)
+    {
+        $service = new User();
+        $user = $service->getUserById($data["id"]);
+        $this->back($user);
+    }
+
     public function createUser (array $data)
     {
         if(in_array("", $data)) {
