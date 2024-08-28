@@ -45,18 +45,6 @@ $route->delete("/delete-product/{id}","Products:deleteProduct");
 
 $route->group("null");
 
-$route->group("/categories");
-
-$route->get("/list","Categories:listProduct");
-$route->get("/list/{id}","Categories:listById");
-$route->post("/insert-product","Categories:insertProduct");
-$route->post("/update-product/{id}","Categories:updateProduct");
-$route->delete("/delete-product/{id}","Categories:deleteProduct");
-
-
-
-$route->group("null");
-
 
 $route->group("/admin");
 
