@@ -9,9 +9,16 @@ use Source\Core\TokenJWT;
 
 class Categories extends Api
 {
-   
+
+    public function __construct()
+    {
+        parent::__construct();
+        
+    }
     public function insertCategory (array $data)
     {
+        $this->auth();
+
         if(in_array("", $data)) {
             $this->back([
                 "type" => "error",
@@ -43,9 +50,9 @@ class Categories extends Api
     }
     public function listCategory(array $data)
     {
-        // quando a rota não necessita de autenticação, não evoca o método $this->auth()
+        
         $category = new Category();
-        $listcategories = $category->listCategory($data["id"]);
+        $listcategories = $category->listCategory($data);
         $this->back($listcategories);
     }
     
@@ -57,9 +64,11 @@ class Categories extends Api
 }
 public function updateCategory(array $data)
 {
+    $this->auth();
+
     $service = new Category(
         $data["id"],
-            $data["name"]
+        $data["name"]
     );
     $category = $service->updateCategory();
     //$this->back($product);
@@ -68,6 +77,8 @@ public function updateCategory(array $data)
 
 public function deleteCategory(array $data)
 {
+    $this->auth();
+
     $service = new Category();
     $success = $service->deleteCategory($data["id"]);
     

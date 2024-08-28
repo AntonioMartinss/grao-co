@@ -9,9 +9,14 @@ use Source\Core\TokenJWT;
 
 class Products extends Api
 {
-   
+    public function __construct()
+    {
+        parent::__construct();
+    }
     public function insertProduct (array $data)
     {
+        $this->auth();
+
         if(in_array("", $data)) {
             $this->back([
                 "type" => "error",
@@ -48,7 +53,6 @@ class Products extends Api
     }
     public function listProduct(array $data)
     {
-        // quando a rota não necessita de autenticação, não evoca o método $this->auth()
         $product = new Product();
         $listProducts = $product->listProduct($data["id"]);
         $this->back($listProducts);
@@ -62,6 +66,8 @@ class Products extends Api
 }
 public function updateProduct(array $data)
 {
+    $this->auth();
+
     $service = new Product(
         $data["id"],
             $data["name"],
@@ -78,6 +84,8 @@ public function updateProduct(array $data)
 
 public function deleteProduct(array $data)
 {
+    $this->auth();
+    
     $service = new Product();
     $success = $service->deleteProduct($data["id"]);
     

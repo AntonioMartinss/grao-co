@@ -9,14 +9,20 @@ use Source\Core\TokenJWT;
 
 class Users extends Api
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
     public function listUsers ()
     {
+        $this->auth();
         $users = new User();
         $this->back($users->selectAll());
     }
 
     public function listById(array $data)
     {
+        $this->auth();
         $service = new User();
         $user = $service->getUserById($data["id"]);
         $this->back($user);
@@ -24,6 +30,7 @@ class Users extends Api
 
     public function createUser (array $data)
     {
+
         if(in_array("", $data)) {
             $this->back([
                 "type" => "error",
