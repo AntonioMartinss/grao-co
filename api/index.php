@@ -41,6 +41,16 @@ $route->post("/insert-product","Products:insertProduct");
 $route->post("/update-product/{id}","Products:updateProduct");
 $route->delete("/delete-product/{id}","Products:deleteProduct");
 
+$route->group("null");
+
+$route->group("/categories");
+
+$route->get("/list","Categories:listCategory");
+$route->get("/list/{id}","Categories:listById");
+$route->post("/insert-category","Categories:insertCategory");
+$route->post("/update-category/{id}","Categories:updateCategory");
+$route->delete("/delete-category/{id}","Categories:deleteCategory");
+
 
 
 $route->group("null");
