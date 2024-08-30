@@ -3,63 +3,94 @@
 
 ## Rotas e Requisições
 
-- #### Atualmente na plataforma estão disponíveis para produtos e categorias, 10 rotas no total
+Atualmente, a plataforma disponibiliza 10 rotas no total para manipulação de produtos e categorias.
 
-## Produtos
+### Produtos
 
-#### Listar todos os produtos inseridos no banco.
-> $route->get("/list","Products:listProduct");
-<br>
-#### Listar por ID os produtos inseridos no banco.
-> $route->get("/list/{id}","Products:listById");
-<br>
-#### Inserir produtos no banco.
-> $route->post("/insert-product","Products:insertProduct");
-<br>
-#### Atualizar produtos no banco.
-> $route->post("/update-product/{id}","Products:updateProduct");
-obs: Em breve será adicionado a funcionalidade com PUT.
-<br>
-#### Deletar produto no banco.
-> $route->delete("/delete-product/{id}","Products:deleteProduct");
-<br>
+- **Listar todos os produtos inseridos no banco:**
+  ```http
+  GET /list
+  ```
+  - Controlador: `Products:listProduct`
 
-## Categorias
+- **Listar um produto por ID:**
+  ```http
+  GET /list/{id}
+  ```
+  - Controlador: `Products:listById`
 
-#### Listar todas as categorias inseridas no banco.
-> $route->get("/list","Categories:listCategory");;
-<br>
-#### Listar por ID as categorias inseridas no banco.
-> $route->get("/list/{id}","Categories:listById");
-<br>
-#### Inserir categorias no banco.
-> $route->post("/insert-category","Categories:insertCategory");
-<br>
-#### Atualizar categorias no banco.
-> $route->post("/update-category/{id}","Categories:updateCategory");
-obs: Em breve será adicionado a funcionalidade com PUT.
-<br>
-#### Deletar categoria no banco.
-> $route->delete("/delete-category/{id}","Categories:deleteCategory");
-<br>
+- **Inserir um produto no banco:**
+  ```http
+  POST /insert-product
+  ```
+  - Controlador: `Products:insertProduct`
 
-## Exemplos de retornos após a requisição
+- **Atualizar um produto no banco:**
+  ```http
+  POST /update-product/{id}
+  ```
+  - Controlador: `Products:updateProduct`
+  - **Nota:** Em breve será adicionada a funcionalidade com o método `PUT`.
 
-- ####   try {
-        $stmt->execute();
-        $this->message = "Categoria Excluida com sucesso ";
-        return true;
-   #### } catch (PDOException) {
-        $this->message = "Erro ao excluir a categoria: ";
-        return false;
-    }
+- **Deletar um produto do banco:**
+  ```http
+  DELETE /delete-product/{id}
+  ```
+  - Controlador: `Products:deleteProduct`
+
+### Categorias
+
+- **Listar todas as categorias inseridas no banco:**
+  ```http
+  GET /list
+  ```
+  - Controlador: `Categories:listCategory`
+
+- **Listar uma categoria por ID:**
+  ```http
+  GET /list/{id}
+  ```
+  - Controlador: `Categories:listById`
+
+- **Inserir uma categoria no banco:**
+  ```http
+  POST /insert-category
+  ```
+  - Controlador: `Categories:insertCategory`
+
+- **Atualizar uma categoria no banco:**
+  ```http
+  POST /update-category/{id}
+  ```
+  - Controlador: `Categories:updateCategory`
+  - **Nota:** Em breve será adicionada a funcionalidade com o método `PUT`.
+
+- **Deletar uma categoria do banco:**
+  ```http
+  DELETE /delete-category/{id}
+  ```
+  - Controlador: `Categories:deleteCategory`
+
+## Exemplos de Retorno das Requisições
+
+Aqui está um exemplo de como a aplicação lida com a exclusão de uma categoria:
+
+```php
+try {
+    $stmt->execute();
+    $this->message = "Categoria excluída com sucesso";
+    return true;
+} catch (PDOException $e) {
+    $this->message = "Erro ao excluir a categoria: " . $e->getMessage();
+    return false;
+}
+```
 
 ## Autenticação com Token JWT
 
-- #### Atualmente, a maioria das rotas estão sendo protegidas por token, após o login é gerado um token que permite ser utilizado estas funcionalidades.
+A maioria das rotas está protegida por token JWT. Após o login, um token é gerado e deve ser utilizado para acessar essas funcionalidades.
 
-- #### Sucesso ao processar a requisição -> 200
-- #### Acesso não autorizado -> 401
-- #### Erro ao processar a requisição -> 404
-
-
+- **Códigos de Status:**
+  - Sucesso ao processar a requisição: **200**
+  - Acesso não autorizado: **401**
+  - Erro ao processar a requisição: **404**
