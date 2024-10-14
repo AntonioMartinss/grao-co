@@ -67,3 +67,8 @@ form input[type="submit"]{
     font-size: 15px;
     font-family: var(--body-font);
 }
+.toast-container {
+    background-color: #1A1A1A;
+    color: white;
+    border-radius: 10px;
+}

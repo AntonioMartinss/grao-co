@@ -7,8 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="themes/web/assets/css/register.css">
-    <script src="themes/web/assets/js/register.js" async></script>
+    <link rel="stylesheet" href="assets/css/web/register.css">
+    <script src="assets/js/web/register.js" async></script>
     <title>Cadastro</title>
 </head>
 <body>

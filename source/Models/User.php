@@ -101,13 +101,21 @@ class User extends Model
 
     public function listUsers()
     {
-
-        $query = "SELECT * FROM users";
+        $query = "SELECT 
+                    users.id, 
+                    users.name, 
+                    users.email, 
+                    users.password, 
+                    users.url, 
+                    users.usersCategories_id
+                  FROM users";
+                  
         $conn = Connect::getInstance();
         $stmt = $conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    
 
     public function getUserById(int $id): array
     {

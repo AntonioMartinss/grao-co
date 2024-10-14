@@ -9,9 +9,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="themes/web/assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/web/login.css">
     <script src="https://kit.fontawesome.com/e9ad9d0028.js" crossorigin="anonymous"></script>
-    <script src="themes/web/assets/js/login.js" async></script>
+    <script src="assets/js/web/login.js" async></script>
     
     <title>Entrar</title>
 </head>
@@ -22,7 +22,7 @@
         <div class="container">
             <div class="form-login">
                 <div class="form-img">
-                    <img src="themes/web/assets/images/login-image.svg" alt="user-image" />
+                    <img src="assets/images/web/login-image.svg" alt="user-image" />
                 </div>
                 <form id="formLogin">
                         <span>Já é cliente? Faça o login.</span>

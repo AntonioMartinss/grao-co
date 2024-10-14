@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="<?= url("themes/adm/assets/css/_theme.css"); ?>">
+    <link rel="stylesheet" href="<?= url("assets/css/adm/_theme.css"); ?>">
     <script src="https://kit.fontawesome.com/e9ad9d0028.js" crossorigin="anonymous"></script>
 </head>
 
@@ -31,6 +31,8 @@
             <ul class="li" onclick="window.location.href = '<?= url("/admin/inicio"); ?>'">Adicionar Produto</ul>
             <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-produto"); ?>'">Editar Produto</ul>
             <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-usuario"); ?>'">Editar usuário</ul>
+            <ul class="li" onclick="window.location.href = '<?= url("/admin/adicionar-categoria"); ?>'">Adicionar Categoria</ul>
+            <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-categoria"); ?>'">Editar Categoria</ul>
             <!-- <ul class="li">Avisos</ul> -->
 
         </aside>
@@ -44,7 +46,7 @@
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="<?= url("themes/app/assets/images/logo.svg"); ?>" alt="Logo">
+                    <img src="<?= url("assets/images/adm/logo.svg"); ?>" alt="Logo">
                 </div>
                 <div class="">
                     <p>Descubra o mundo em uma xícara.</p>

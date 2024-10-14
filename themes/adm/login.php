@@ -5,10 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= url("themes/adm/assets/css/login.css"); ?>">
-    <link rel="stylesheet" href="<?= url("themes/adm/assets/css/_theme.css"); ?>">
+    <link rel="stylesheet" href="<?= url("assets/css/adm/login.css"); ?>">
+    <link rel="stylesheet" href="<?= url("assets/css/adm/_theme.css"); ?>">
     <script src="https://kit.fontawesome.com/e9ad9d0028.js" crossorigin="anonymous"></script>
-    <script src="themes/adm/assets/js/home.js" async></script>
+    <script type="module" src="assets/js/adm/login.js" async></script>
     <title>Login - Grao & Co.</title>
 </head>
 
@@ -40,6 +40,7 @@
             <input type="password" name="password"  placeholder="Senha">
             <input type="submit" value="Entrar">
         </form>
+        <div class="toast-container" ></div>
     </main>
 </body>
 

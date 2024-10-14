@@ -7,8 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="imagex/png" href="themes/web/assets/images/favicon.png">
-    <link rel="stylesheet" href="themes/web/assets/css/home.css">
+    <link rel="shortcut icon" type="imagex/png" href="assets/images/web/favicon.png">
+    <link rel="stylesheet" href="assets/css/web/home.css">
     <script src="https://kit.fontawesome.com/e9ad9d0028.js" crossorigin="anonymous"></script>
     <title>Grão & Co.</title>
 </head>
@@ -16,35 +16,35 @@
    
 
   <div class="video">
-    <img src="themes/web/assets/images/Grão & Co..gif">
+    <img src="assets/images/web/Grão & Co..gif">
   </div>
   <div class="country">
     <p>Industria Brasileira</p>
-    <img src="themes/web/themes/web/assets/images/brazil.png" alt="">
+    <img src="assets/images/web/brazil.png" alt="">
     </div>
 
   <h6 class="h6">Nossos Produtos</h6>
  <div class="product-container">
     <div class="product">
-        <img src="themes/web/assets/images/noimage.png">
+        <img src="assets/images/web/noimage.png">
         <h3>Produto 1</h3>
         <p>Preço: R$ 20,00</p>
         <button id="btnBuy">Comprar / Assinar</button>
     </div>
     <div class="product">
-        <img src="themes/web/assets/images/noimage.png">
+        <img src="assets/images/web/noimage.png">
         <h3>Produto 2</h3>
         <p>Preço: R$ 20,00</p>
         <button id="btnBuy">Comprar / Assinar</button>
     </div>
     <div class="product">
-        <img src="themes/web/assets/images/noimage.png">
+        <img src="assets/images/web/noimage.png">
         <h3>Produto 3</h3>
         <p>Preço: R$ 20,00</p>
         <button id="btnBuy">Comprar / Assinar</button>
     </div>
     <div class="product">
-        <img src="themes/web/assets/images/noimage.png">
+        <img src="assets/images/web/noimage.png">
         <h3>Produto 4</h3>
         <p>Preço: R$ 20,00</p>
         <button id="btnBuy">Comprar / Assinar</button>
@@ -57,11 +57,11 @@
 
     <div class="post">
         <div class="post-header">
-            <img src="themes/web/assets/images/logo.svg" alt="Profile Picture">
+            <img src="assets/images/web/logo.svg" alt="Profile Picture">
             <h3>Grão & Co.</h3>
         </div>
         <div class="post-image">
-            <img src="themes/web/assets/images/cafe.jpg" alt="Post Image">
+            <img src="assets/images/web/cafe.jpg" alt="Post Image">
         </div>
         <div class="post-footer">
             <div class="likes">&#x2665; likes</div>
@@ -72,11 +72,11 @@
 
     <div class="post">
         <div class="post-header">
-            <img src="themes/web/assets/images/logo.svg" alt="Profile Picture">
+            <img src="assets/images/web/logo.svg" alt="Profile Picture">
             <h3>Grão & Co.</h3>
         </div>
         <div class="post-image">
-            <img src="themes/web/assets/images/pacote.jpg" alt="Post Image">
+            <img src="assets/images/web/pacote.jpg" alt="Post Image">
         </div>
         <div class="post-footer">
             <div class="likes">&#x2665; likes</div>

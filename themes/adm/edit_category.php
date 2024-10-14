@@ -10,8 +10,8 @@ $this->layout("_theme");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <link rel="stylesheet" href="<?= url("assets/css/adm/edit_product.css"); ?>">
-    <script type="module" src="<?= url("assets/js/adm/edit_product.js"); ?>"></script>
-    <title>Editar Produtos</title>
+    <script type="module" src="<?= url("assets/js/adm/edit_category.js"); ?>"></script>
+    <title>Editar Categorias</title>
 </head>
 
 <body>
@@ -19,7 +19,7 @@ $this->layout("_theme");
 <main>
     <div class="container">
         <div class="container-edit">
-            <h2>Editar Produtos</h2>
+            <h2>Editar Categorias</h2>
         </div>
         <div class="container-table">
             <table>

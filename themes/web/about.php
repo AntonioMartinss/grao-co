@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="themes/web/assets/css/about.css">
+    <link rel="stylesheet" href="assets/css/web/about.css">
     <title>Sobre nós</title>
 </head>
 <body>
@@ -15,7 +15,7 @@
         <h2>Grão & Co. Um e-commerce de cafés especiais</h1>
     <div class="container">
             <div class="container-img">
-                <img src="themes/web/assets/images/coffe-shop-facade.jpg" alt="fachada cafeteria">
+                <img src="assets/images/web/coffe-shop-facade.jpg" alt="fachada cafeteria">
             </div>
         <div class="container-message">
             <p>Bem-vindo à Grão & Co., seu destino online para explorar e saborear os melhores cafés especiais do mundo. Aqui, acreditamos que cada grão tem uma história para contar e cada história oferece uma experiência única. Permita-nos levá-lo a uma jornada sensorial, onde cada xícara é uma porta de entrada para descobrir o mundo em seus mais ricos sabores.</p>

@@ -2,9 +2,9 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="<?= url("themes/app/assets/css/_theme.css"); ?>">
+    <link rel="stylesheet" href="<?= url("assets/css/app/_theme.css"); ?>">
     <script src="https://kit.fontawesome.com/e9ad9d0028.js" crossorigin="anonymous"></script>
-    <script src="themes/web/assets/js/_theme.js" async></script>
+    <script src="assets/js/app/_theme.js" async></script>
 </head>
 <body>
 <header>

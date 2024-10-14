@@ -2,9 +2,9 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="themes/web/assets/css/_theme.css">
+    <link rel="stylesheet" href="assets/css/web/_theme.css">
     <script src="https://kit.fontawesome.com/e9ad9d0028.js" crossorigin="anonymous"></script>
-    <script src="themes/web/assets/js/_theme.js" async></script>
+    <script src="assets/js/web/_theme.js" async></script>
 </head>
 <body>
 <header>
@@ -37,7 +37,7 @@
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="themes/web/assets/images/logo.svg" alt="Logo">
+                    <img src="assets/images/web/logo.svg" alt="Logo">
                 </div>
                 <div class="">
                   <p>Descubra o mundo em uma xícara.</p>

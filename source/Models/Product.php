@@ -130,8 +130,10 @@ class Product extends Model
 
     public function listProduct()
     {
+        $query = "SELECT products.id, products.name, value, description, quantity, url, categories_id, categories.name AS category_name 
+              FROM products 
+              INNER JOIN categories ON products.categories_id = categories.id";
 
-        $query = "SELECT * FROM products";
         $conn = Connect::getInstance();
         $stmt = $conn->prepare($query);
         $stmt->execute();
@@ -140,29 +142,28 @@ class Product extends Model
 
     public function updateProduct(): bool
     {
-
         $conn = Connect::getInstance();
 
-    $checkQuery = "SELECT name FROM products WHERE name = :name";
-    
-    $checkStmt = $conn->prepare($checkQuery);
-    $checkStmt->bindParam(":name", $name);
-    $checkStmt->execute();
+        $checkQuery = "SELECT name FROM products WHERE name = :name AND id != :id";
+        $checkStmt = $conn->prepare($checkQuery);
+        $checkStmt->bindParam(":name", $this->name);
+        $checkStmt->bindParam(":id", $this->id);
+        $checkStmt->execute();
 
-    if ($checkStmt->rowCount() === 1) {
-        $this->message = "Nome já cadastrado.";
-        return false;
-    }
+        if ($checkStmt->rowCount() > 0) {
+            $this->message = "Nome já cadastrado.";
+            return false;
+        }
 
         $query = "UPDATE products 
-        SET products.name = :name, 
-            products.value = :value, 
-            products.quantity = :quantity, 
-            products.description = :description, 
-            products.url = :url, 
-            products.categories_id = :categories_id 
-        WHERE products.id = :id";
-        $conn = Connect::getInstance();
+              SET name = :name, 
+                  value = :value, 
+                  quantity = :quantity, 
+                  description = :description, 
+                  url = :url, 
+                  categories_id = :categories_id 
+              WHERE id = :id";
+
         $stmt = $conn->prepare($query);
         $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":name", $this->name);
@@ -171,46 +172,47 @@ class Product extends Model
         $stmt->bindParam(":description", $this->description);
         $stmt->bindParam(":url", $this->url);
         $stmt->bindParam(":categories_id", $this->categories_id);
-        
+
         try {
             $stmt->execute();
-            $this->message = "Produto Atualizado com sucesso ";
+            $this->message = "Produto Atualizado com sucesso.";
             return true;
-        } catch (PDOException) {
-            $this->message = "Erro ao Atualizar o produto: ";
+        } catch (PDOException $e) {
+            $this->message = "Erro ao Atualizar o produto: " . $e->getMessage();
             return false;
         }
     }
 
+
     public function deleteProduct(int $id): bool
-{
+    {
 
-    $conn = Connect::getInstance();
+        $conn = Connect::getInstance();
 
-    $checkQuery = "SELECT id FROM products WHERE id = :id";
-    
-    $checkStmt = $conn->prepare($checkQuery);
-    $checkStmt->bindParam(":id", $id);
-    $checkStmt->execute();
+        $checkQuery = "SELECT id FROM products WHERE id = :id";
 
-    if ($checkStmt->rowCount() === 0) {
-        $this->message = "Produto não encontrado.";
-        return false;
+        $checkStmt = $conn->prepare($checkQuery);
+        $checkStmt->bindParam(":id", $id);
+        $checkStmt->execute();
+
+        if ($checkStmt->rowCount() === 0) {
+            $this->message = "Produto não encontrado.";
+            return false;
+        }
+
+        $query = "DELETE FROM products WHERE id = :id";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(":id", $id);
+
+        try {
+            $stmt->execute();
+            $this->message = "Produto Excluido com sucesso ";
+            return true;
+        } catch (PDOException) {
+            $this->message = "Erro ao excluir o produto: ";
+            return false;
+        }
     }
-
-    $query = "DELETE FROM products WHERE id = :id";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(":id", $id);
-
-    try {
-        $stmt->execute();
-        $this->message = "Produto Excluido com sucesso ";
-        return true;
-    } catch (PDOException) {
-        $this->message = "Erro ao excluir o produto: ";
-        return false;
-    }
-}
 
 
 

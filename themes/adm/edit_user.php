@@ -8,25 +8,29 @@ $this->layout("_theme");
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= url("themes/adm/assets/css/home.css"); ?>">
-    <title>Editar usuários</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="<?= url("assets/css/adm/edit_product.css"); ?>">
+    <script type="module" src="<?= url("assets/js/adm/edit_users.js"); ?>"></script>
+    <title>Editar Usuários</title>
 </head>
 
 <body>
 
-    <main>
-
-        <div class="container">
+<main>
+    <div class="container">
+        <div class="container-edit">
             <h2>Editar Usuários</h2>
-            <div class="container-table">
-                <!-- Conteúdo vindo do Banco -->
-            </div>
-
         </div>
-
-
-    </main>
+        <div class="container-table">
+            <table>
+                <tbody>
+                    <!-- Conteúdo vindo do Banco -->
+                </tbody>
+            </table>
+        </div>
+        <div class="toast-container" ></div>
+    </div>
+</main>
 
 
 </body>

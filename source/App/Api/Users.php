@@ -15,7 +15,6 @@ class Users extends Api
     }
     public function listUsers ()
     {
-        $this->auth();
         $users = new User();
         $this->back($users->selectAll());
     }
