@@ -25,7 +25,7 @@ $route->group("/users");
 $route->post("/","Users:createUser");
 $route->post("/login","Users:loginUser");
 $route->post("/admin","Users:loginAdmin");
-$route->post("/update","Users:updateUser");
+$route->put("/update","Users:updateUser");
 $route->get("/list", "Users:listUsers");
 $route->get("/list/{id}","Users:listById");
 $route->post("/set-password","Users:setPassword");
@@ -37,8 +37,8 @@ $route->group("/products");
 
 $route->get("/list","Products:listProduct");
 $route->get("/list/{id}","Products:listById");
-$route->post("/insert-product","Products:insertProduct");
-$route->post("/update-product/{id}","Products:updateProduct");
+$route->post("/insert","Products:insertProduct");
+$route->put("/update-product/{id}","Products:updateProduct");
 $route->delete("/delete-product/{id}","Products:deleteProduct");
 
 $route->group("null");
