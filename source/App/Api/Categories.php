@@ -81,19 +81,19 @@ public function deleteCategory(array $data)
 
     $service = new Category();
     $success = $service->deleteCategory($data["id"]);
-    
-    if(!$success){
-        $this->back([
-            "type" => "error",
-            "message" => $service->getMessage()
+
+    if ($success) {
+        echo json_encode([
+            "success" => true,
+            "message" => "Categoria excluída com sucesso!"
         ]);
         return;
+    } else {
+        echo json_encode([
+            "success" => false,
+            "message" => $service->getMessage()
+        ]);
     }
-
-    $this->back([
-        "type" => "success",
-        "message" => "Categoria Excluida com sucesso!"
-    ]);
 }
     
 }

@@ -9,7 +9,7 @@ $this->layout("_theme");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link rel="stylesheet" href="<?= url("assets/css/adm/edit_product.css"); ?>">
+    <link rel="stylesheet" href="<?= url("assets/css/adm/edit_category.css"); ?>">
     <script type="module" src="<?= url("assets/js/adm/edit_category.js"); ?>"></script>
     <title>Editar Categorias</title>
 </head>

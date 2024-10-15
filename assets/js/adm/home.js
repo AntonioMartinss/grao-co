@@ -21,6 +21,26 @@ formInsertProduct.addEventListener("submit", async (e) => {
     }).then((response) => {
         response.json().then((data) => {
             let response = data
+            showToast(`${response}`);
+        });
+    });
+
+});
+
+const formInsertCategory = document.querySelector("#form-insert-category")
+
+formInsertCategory.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    fetch(getBackendUrlApi("categories/insert-category"), {
+        method: "POST",
+        body: new FormData(formInsertCategory),
+        headers: {
+            token: userAuth.token
+        }
+    }).then((response) => {
+        response.json().then((data) => {
+            let response = data
             console.log(response)
         });
     });

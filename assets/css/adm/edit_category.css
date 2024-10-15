@@ -43,7 +43,7 @@ main {
 }
 
 .container-table  {
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: center;
 }
@@ -78,7 +78,7 @@ main {
 
   th, td {
     padding: 10px;
-    text-align: left;
+    text-align: center;
     border: 1px solid #ddd;
   }
 

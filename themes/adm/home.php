@@ -11,7 +11,7 @@ $this->layout("_theme");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= url("assets/css/adm/home.css"); ?>">
     <script type="module" src="<?= url("assets/js/adm/home.js"); ?>" async></script>
-    <title>Início Admin - Grao & Co.</title>
+    <title>Administrativo - Grao & Co.</title>
 </head>
 
 <body>
@@ -39,6 +39,16 @@ $this->layout("_theme");
                     <input type="submit" value="Cadastrar Produto">
                 </form>
             </div>
+            <div class="form-products">
+
+                <form id="form-insert-category">
+                    <h2>Cadastro de Categoria</h2>
+                    <input type="text" name="name" placeholder="Nome da Categoria" required>
+                    
+                    <input type="submit" value="Cadastrar Categoria">
+                </form>
+            </div>
+            <div class="toast-container" ></div>
         </div>
 
 

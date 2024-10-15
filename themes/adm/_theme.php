@@ -28,11 +28,11 @@
 
         <aside>
             <h3>Acesso Rápido</h3>
-            <ul class="li" onclick="window.location.href = '<?= url("/admin/inicio"); ?>'">Adicionar Produto</ul>
+            <ul class="li" onclick="window.location.href = '<?= url("/admin/inicio"); ?>'">Adicionar Produto/Categoria</ul>
             <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-produto"); ?>'">Editar Produto</ul>
-            <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-usuario"); ?>'">Editar usuário</ul>
-            <ul class="li" onclick="window.location.href = '<?= url("/admin/adicionar-categoria"); ?>'">Adicionar Categoria</ul>
             <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-categoria"); ?>'">Editar Categoria</ul>
+            <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-usuario"); ?>'">Editar Usuário</ul>
+            
             <!-- <ul class="li">Avisos</ul> -->
 
         </aside>

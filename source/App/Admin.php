@@ -35,12 +35,6 @@ class Admin
     {
         echo $this->view->render("edit_category", []);
     }
-    public function add_category()
-    {
-        echo $this->view->render("add_category", []);
-    }
-    public function remove_user()
-    {
-        echo $this->view->render("remove_user", []);
-    }
+    
+    
 }

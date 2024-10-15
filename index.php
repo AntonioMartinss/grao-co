@@ -33,7 +33,6 @@ $route->get("/", "Admin:login");
 $route->get("/inicio", "Admin:home");
 $route->get("/editar-produto", "Admin:edit_product");
 $route->get("/editar-usuario", "Admin:edit_user");
-$route->get("/adicionar-categoria", "Admin:add_category");
 $route->get("/editar-categoria", "Admin:edit_category");
 $route->group(null);
 
