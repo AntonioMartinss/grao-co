@@ -29,10 +29,10 @@ class Products extends Api
             null,
             $data["name"],
             $data["value"],
-            $data["quantity"],
             $data["description"],
+            $data["quantity"],
+            $data["url"],            
             $data["categories_id"],
-            $data["url"]
         );
 
         $insertProduct = $product->insert();
@@ -63,7 +63,7 @@ class Products extends Api
         $product = $service->getProductById($data["id"]);
         $this->back($product);
     }
-    public function updateProduct(array $data)
+    public function updateProduct(array $data) : void
     {
         $this->auth();
 
@@ -71,10 +71,11 @@ class Products extends Api
             $data["id"],
             $data["name"],
             $data["value"],
-            $data["quantity"],
             $data["description"],
+            $data["quantity"],
+            $data["url"],
             $data["categories_id"],
-            $data["url"]
+            
         );
         $product = $service->updateProduct();
         if (!$product) {

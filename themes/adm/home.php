@@ -30,7 +30,7 @@ $this->layout("_theme");
                     <input type="text" name="url" placeholder="URL da Imagem" required>
                     <select name="categories_id" required>
                         <option disabled selected>Selecione a categoria</option>
-                        <option value="1">Grãos</option>
+                        <option value="10">Grãos</option>
                         <option value="2">Torrado</option>
                         <option value="3">Moído</option>
                         <option value="4">Solúvel</option>

@@ -17,6 +17,7 @@ fetch(getBackendUrlApi("products/list"))
       products.forEach((event) => {
         document.querySelector("tbody").innerHTML += `
           <tr>
+          
             <td>${event.id}</td>
             <td><input type="text" name="name" value="${event.name}" disabled></td>
             <td><input type="number" name="value" value="${event.value}" disabled></td>
@@ -34,6 +35,10 @@ fetch(getBackendUrlApi("products/list"))
           const inputs = btnEdit.parentElement.parentElement.querySelectorAll('input');
           const productId = btnEdit.parentElement.parentElement.querySelector('td:first-child').textContent;
 
+          console.log(productId)
+
+
+
           const isDisabled = inputs[0].disabled;
 
           if (isDisabled) {
@@ -42,7 +47,13 @@ fetch(getBackendUrlApi("products/list"))
             });
           } else {
             const update = {
-              id: productId
+              id: productId,
+              name: inputs[0].value,        
+              value: inputs[1].value,
+              description: inputs[2].value,
+              quantity: inputs[3].value,
+              url: inputs[4].value,
+              categories_id: inputs[5].value
             };
 
             inputs.forEach(input => {
@@ -56,6 +67,7 @@ fetch(getBackendUrlApi("products/list"))
                 'Content-type': 'application/json'
               },
               body: JSON.stringify(update)
+
             }).then((response) => {
               response.json().then((data) => {
                 if (data.success) {
@@ -79,20 +91,20 @@ fetch(getBackendUrlApi("products/list"))
           fetch(getBackendUrlApi(`products/delete-product/${productId}`), {
             method: 'DELETE',
             headers: {
-                token: userAuth.token,
+              token: userAuth.token,
             },
-        }).then((response) => {
+          }).then((response) => {
             response.json().then((data) => {
-                if (data.success) {
-                    showToast(`Produto Excluído da Base de Dados!`);
-                    return;
-                } else {
-                  showToast(`Produto não Excluído da Base de Dados!`);
-                }
+              if (data.success) {
+                showToast(`Produto Excluído da Base de Dados!`);
+                return;
+              } else {
+                showToast(`Produto não Excluído da Base de Dados!`);
+              }
             });
-        });
-        
-          
+          });
+
+
         });
       });
     });

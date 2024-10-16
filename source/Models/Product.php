@@ -11,29 +11,29 @@ class Product extends Model
     private $id;
     private $name;
     private $value;
-    private $quantity;
     private $description;
-    private $categories_id;
+    private $quantity;
     private $url;
+    private $categories_id;
     private $message;
 
     public function __construct(
         int $id = null,
         string $name = null,
         float $value = null,
-        int $quantity = null,
         string $description = null,
+        int $quantity = null,
+        string $url = null,
         int $categories_id = null,
-        string $url = null
 
     ) {
         $this->id = $id;
         $this->name = $name;
         $this->value = $value;
-        $this->quantity = $quantity;
         $this->description = $description;
-        $this->categories_id = $categories_id;
+        $this->quantity = $quantity;
         $this->url = $url;
+        $this->categories_id = $categories_id;
         $this->entity = "products";
     }
     public function getId(): ?int
@@ -142,6 +142,17 @@ class Product extends Model
 
     public function updateProduct(): bool
     {
+        $data = file_get_contents('php://input');
+        $json_data = json_decode($data, true);
+
+        $this->id = $json_data['id'];
+        $this->name = $json_data['name'];
+        $this->value = $json_data['value'];
+        $this->quantity = $json_data['quantity'];
+        $this->description = $json_data['description'];
+        $this->url = $json_data['url'];
+        $this->categories_id = $json_data['categories_id'];
+
         $conn = Connect::getInstance();
 
         $checkQuery = "SELECT name FROM products WHERE name = :name AND id != :id";
@@ -156,13 +167,13 @@ class Product extends Model
         }
 
         $query = "UPDATE products 
-              SET name = :name, 
-                  value = :value, 
-                  quantity = :quantity, 
-                  description = :description, 
-                  url = :url, 
-                  categories_id = :categories_id 
-              WHERE id = :id";
+                  SET name = :name, 
+                      value = :value, 
+                      quantity = :quantity, 
+                      description = :description, 
+                      url = :url, 
+                      categories_id = :categories_id 
+                  WHERE id = :id";
 
         $stmt = $conn->prepare($query);
         $stmt->bindParam(":id", $this->id);
@@ -173,6 +184,10 @@ class Product extends Model
         $stmt->bindParam(":url", $this->url);
         $stmt->bindParam(":categories_id", $this->categories_id);
 
+        var_dump($this->id, $this->name);
+        var_dump($this);
+        var_dump($stmt);
+
         try {
             $stmt->execute();
             $this->message = "Produto Atualizado com sucesso.";
@@ -182,6 +197,8 @@ class Product extends Model
             return false;
         }
     }
+
+
 
 
     public function deleteProduct(int $id): bool
