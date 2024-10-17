@@ -20,8 +20,14 @@ formInsertProduct.addEventListener("submit", async (e) => {
         }
     }).then((response) => {
         response.json().then((data) => {
-            let response = data
-            showToast(`Café cadastrado!`);
+            if(data){
+                console.log(data)
+                let response = data
+                showToast(`${response.message}!`);
+            }else{
+                showToast(`${response.message}!`);
+            }
+            
         });
     });
 
@@ -40,7 +46,13 @@ formInsertCategory.addEventListener("submit", async (e) => {
         }
     }).then((response) => {
         response.json().then((data) => {
-            showToast(`Nova Categoria cadastrada!`);
+            if(data){
+                console.log(data)
+                let response = data
+                showToast(`${response.message}!`);
+            }else{
+                showToast(`${response.message}!`);
+            }
         });
     });
 
@@ -59,7 +71,13 @@ formInsertOrder.addEventListener("submit", async (e) => {
         }
     }).then((response) => {
         response.json().then((data) => {
-            showToast(`Novo Pedido cadastrado!`);
+            if(data){
+                console.log(data)
+                let response = data
+                showToast(`${response.message}!`);
+            }else{
+                showToast(`${response.message}!`);
+            }
         });
     });
 

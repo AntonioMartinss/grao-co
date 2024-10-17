@@ -5,7 +5,7 @@ namespace Source\Models;
 use PDOException;
 use Source\Core\Connect;
 use Source\Core\Model;
-
+error_reporting(E_ERROR | E_PARSE);
 class Category extends Model
 {
     private $id;

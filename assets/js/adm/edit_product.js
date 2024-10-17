@@ -75,9 +75,10 @@ fetch(getBackendUrlApi("products/list"))
                   inputs.forEach(input => {
                     input.disabled = true;
                   });
-                  showToast(`Produto Atualizado na Base de Dados!`);
+                  showToast(`${data.message}!`);
                 } else {
-                  showToast(`Produto não Atualizado na Base de Dados!`);
+                  showToast(`${data.message}!`);
+                  
                 }
               });
             });
@@ -96,12 +97,13 @@ fetch(getBackendUrlApi("products/list"))
             },
           }).then((response) => {
             response.json().then((data) => {
-              if (data.success) {
-                showToast(`Produto Excluído da Base de Dados!`);
-                return;
-              } else {
-                showToast(`Produto não Excluído da Base de Dados!`);
-              }
+              if(data){
+                console.log(data)
+                let response = data
+                showToast(`${response.message}!`);
+            }else{
+                showToast(`${response.message}!`);
+            }
             });
           });
 

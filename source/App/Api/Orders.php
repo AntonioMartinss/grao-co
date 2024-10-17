@@ -7,19 +7,19 @@ namespace Source\App\Api;
 use Source\Models\Order;
 use Source\Core\TokenJWT;
 
+error_reporting(E_ERROR | E_PARSE);
+
 class Orders extends Api
 {
-
     public function __construct()
     {
         parent::__construct();
-        
     }
-    public function insertOrder (array $data)
+
+    public function insertOrder(array $data)
     {
         $this->auth();
-
-        if(in_array("", $data)) {
+        if (in_array("", $data)) {
             $this->back([
                 "type" => "error",
                 "message" => "Preencha todos os campos"
@@ -32,12 +32,12 @@ class Orders extends Api
             $data["total"],
             $data["quantity"],
             $data["description"],
-            $data["users_id"],
+            $data["users_id"]
         );
-var_dump($order);
-        $insertorder = $order->insert();
 
-        if(!$insertorder){
+        $insertOrder = $order->insert();
+
+        if (!$insertOrder) {
             $this->back([
                 "type" => "error",
                 "message" => $order->getMessage()
@@ -49,69 +49,67 @@ var_dump($order);
             "type" => "success",
             "message" => "Pedido cadastrado com sucesso!"
         ]);
-
     }
+
     public function listOrder(array $data)
     {
-        
         $order = new Order();
         $listOrder = $order->listOrder($data);
         $this->back($listOrder);
     }
-    
+
     public function listById(array $data)
-{
-    $service = new Order();
-    $order = $service->getOrderById($data["id"]);
-    $this->back($order);
-}
-public function updateOrder(array $data): void
-{
-    $this->auth();
-
-    $service = new Order(
-        $data["id"],
-        $data["total"],
-        $data["quantity"],
-        $data["description"],
-        $data["users_id"]
-    );
-
-    $category = $service->updateOrder();
-    if (!$category) {
-        $this->back([
-            "type" => "error",
-            "message" => $service->getMessage()
-        ]);
-        return;
+    {
+        $service = new Order();
+        $order = $service->getOrderById($data["id"]);
+        $this->back($order);
     }
 
-    $this->back([
-        "type" => "success",
-        "message" => "Pedido Atualizado com sucesso!"
-    ]);
-}
+    public function updateOrder(array $data): void
+    {
+        $this->auth();
 
+        $service = new Order(
+            $data["id"],
+            $data["total"],
+            $data["quantity"],
+            $data["description"],
+            $data["users_id"]
+        );
 
-public function deleteOrder(array $data)
-{
-    $this->auth();
+        $order = $service->updateOrder();
+        if (!$order) {
+            $this->back([
+                "type" => "error",
+                "message" => $service->getMessage()
+            ]);
+            return;
+        }
 
-    $service = new Order();
-    $success = $service->deleteOrder($data["id"]);
+        $this->back([
+            "type" => "success",
+            "message" => "Pedido Atualizado com sucesso!"
+        ]);
+    }
 
-    if ($success) {
-        echo json_encode([
-            "success" => true,
+    public function deleteOrder(array $data)
+    {
+        $this->auth();
+
+        $service = new Order();
+        $success = $service->deleteOrder($data["id"]);
+
+        if (!$success) {
+            $this->back([
+                "type" => "error",
+                "message" => $service->getMessage()
+            ]);
+            return;
+        }
+
+        $this->back([
+            "type" => "success",
             "message" => "Pedido excluído com sucesso!"
         ]);
-        return;
-    } else {
-        echo json_encode([
-            "success" => false,
-            "message" => $service->getMessage()
-        ]);
     }
-}
-    
 }

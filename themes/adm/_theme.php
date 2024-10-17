@@ -31,6 +31,7 @@
             <ul class="li" onclick="window.location.href = '<?= url("/admin/inicio"); ?>'">Adicionar</ul>
             <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-produto"); ?>'">Editar Produto</ul>
             <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-categoria"); ?>'">Editar Categoria</ul>
+            <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-pedidos"); ?>'">Editar Pedidos</ul>
             <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-usuario"); ?>'">Editar Usuário</ul>
             
             <!-- <ul class="li">Avisos</ul> -->

@@ -6,13 +6,14 @@ namespace Source\App\Api;
 
 use Source\Models\Product;
 use Source\Core\TokenJWT;
-
+error_reporting(E_ERROR | E_PARSE);
 class Products extends Api
 {
     public function __construct()
     {
         parent::__construct();
     }
+
     public function insertProduct(array $data)
     {
         $this->auth();
@@ -32,7 +33,7 @@ class Products extends Api
             $data["description"],
             $data["quantity"],
             $data["url"],            
-            $data["categories_id"],
+            $data["categories_id"]
         );
 
         $insertProduct = $product->insert();
@@ -50,6 +51,7 @@ class Products extends Api
             "message" => "Produto cadastrado com sucesso!"
         ]);
     }
+
     public function listProduct()
     {
         $product = new Product();
@@ -63,6 +65,7 @@ class Products extends Api
         $product = $service->getProductById($data["id"]);
         $this->back($product);
     }
+
     public function updateProduct(array $data) : void
     {
         $this->auth();
@@ -74,9 +77,9 @@ class Products extends Api
             $data["description"],
             $data["quantity"],
             $data["url"],
-            $data["categories_id"],
-            
+            $data["categories_id"]
         );
+        
         $product = $service->updateProduct();
         if (!$product) {
             $this->back([
@@ -93,23 +96,23 @@ class Products extends Api
     }
 
     public function deleteProduct(array $data)
-{
-    $this->auth();
+    {
+        $this->auth();
 
-    $service = new Product();
-    $success = $service->deleteProduct($data["id"]);
+        $service = new Product();
+        $success = $service->deleteProduct($data["id"]);
 
-    if ($success) {
-        echo json_encode([
-            "success" => true,
+        if (!$success) {
+            $this->back([
+                "type" => "error",
+                "message" => $service->getMessage()
+            ]);
+            return;
+        }
+
+        $this->back([
+            "type" => "success",
             "message" => "Produto excluído com sucesso!"
         ]);
-        return;
-    } else {
-        echo json_encode([
-            "success" => false,
-            "message" => $service->getMessage()
-        ]);
     }
-}
 }

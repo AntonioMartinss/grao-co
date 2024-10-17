@@ -5,7 +5,7 @@ namespace Source\Models;
 use PDOException;
 use Source\Core\Connect;
 use Source\Core\Model;
-
+error_reporting(E_ERROR | E_PARSE);
 class Product extends Model
 {
     private $id;
@@ -184,10 +184,6 @@ class Product extends Model
         $stmt->bindParam(":url", $this->url);
         $stmt->bindParam(":categories_id", $this->categories_id);
 
-        var_dump($this->id, $this->name);
-        var_dump($this);
-        var_dump($stmt);
-
         try {
             $stmt->execute();
             $this->message = "Produto Atualizado com sucesso.";
@@ -249,7 +245,7 @@ class Product extends Model
             return false;
         }
 
-        $query = "INSERT INTO products (name, value, quantity, description,url, categories_id) 
+        $query = "INSERT INTO `products` (name, value, quantity, description,url, categories_id) 
                   VALUES (:name, :value, :quantity, :description, :url, :categories_id)";
 
         $stmt = $conn->prepare($query);

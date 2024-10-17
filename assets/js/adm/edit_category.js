@@ -58,9 +58,9 @@ import {
                     inputs.forEach(input => {
                       input.disabled = true;
                     });
-                    showToast(`Categoria Atualizada na Base de Dados!`);
+                    showToast(`${data.message}!`);
                   } else {
-                    showToast(`Categoria não Atualizada na Base de Dados!`);
+                    showToast(`${data.message}!`);
                   }
                 });
               });
@@ -80,10 +80,10 @@ import {
           }).then((response) => {
               response.json().then((data) => {
                   if (data.success) {
-                      showToast(`Categoria Excluída da Base de Dados!`);
+                    showToast(`${data.message}!`);
                       return;
                   } else {
-                    showToast(`Categoria não Excluída da Base de Dados!`);
+                    showToast(`${data.message}!`);
                   }
               });
           });
