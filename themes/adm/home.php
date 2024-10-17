@@ -30,7 +30,7 @@ $this->layout("_theme");
                     <input type="text" name="url" placeholder="URL da Imagem" required>
                     <select name="categories_id" required>
                         <option disabled selected>Selecione a categoria</option>
-                        <option value="10">Grãos</option>
+                        <option value="1">Grãos</option>
                         <option value="2">Torrado</option>
                         <option value="3">Moído</option>
                         <option value="4">Solúvel</option>
@@ -41,14 +41,27 @@ $this->layout("_theme");
             </div>
             <div class="form-products">
 
+                <form id="form-insert-order">
+                    <h2>Cadastro de Pedidos</h2>
+                    <input type="number" name="total" placeholder="Valor total do pedido" required>
+                    <input type="number" name="quantity" placeholder="Quantidade de itens" required>
+                    <input type="text" name="description" placeholder="Descrição para fácil busca" required>
+                    <input type="number" name="users_id" placeholder="ID do usuário que solicitou" required>
+
+                    <input type="submit" value="Cadastrar Pedido">
+                </form>
+            </div>
+            <div class="form-products">
+
                 <form id="form-insert-category">
                     <h2>Cadastro de Categoria</h2>
                     <input type="text" name="name" placeholder="Nome da Categoria" required>
-                    
+
                     <input type="submit" value="Cadastrar Categoria">
                 </form>
             </div>
-            <div class="toast-container" ></div>
+
+            <div class="toast-container"></div>
         </div>
 
 

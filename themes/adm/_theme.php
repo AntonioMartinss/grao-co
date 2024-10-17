@@ -28,7 +28,7 @@
 
         <aside>
             <h3>Acesso Rápido</h3>
-            <ul class="li" onclick="window.location.href = '<?= url("/admin/inicio"); ?>'">Adicionar Produto/Categoria</ul>
+            <ul class="li" onclick="window.location.href = '<?= url("/admin/inicio"); ?>'">Adicionar</ul>
             <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-produto"); ?>'">Editar Produto</ul>
             <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-categoria"); ?>'">Editar Categoria</ul>
             <ul class="li" onclick="window.location.href = '<?= url("/admin/editar-usuario"); ?>'">Editar Usuário</ul>

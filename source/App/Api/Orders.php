@@ -4,10 +4,10 @@ namespace Source\App\Api;
 
 // Introduzindo token de segurança
 
-use Source\Models\Category;
+use Source\Models\Order;
 use Source\Core\TokenJWT;
 
-class Categories extends Api
+class Orders extends Api
 {
 
     public function __construct()
@@ -15,7 +15,7 @@ class Categories extends Api
         parent::__construct();
         
     }
-    public function insertCategory (array $data)
+    public function insertOrder (array $data)
     {
         $this->auth();
 
@@ -27,51 +27,57 @@ class Categories extends Api
             return;
         }
 
-        $category = new Category(
+        $order = new Order(
             null,
-            $data["name"],
+            $data["total"],
+            $data["quantity"],
+            $data["description"],
+            $data["users_id"],
         );
+var_dump($order);
+        $insertorder = $order->insert();
 
-        $insertcategory = $category->insert();
-
-        if(!$insertcategory){
+        if(!$insertorder){
             $this->back([
                 "type" => "error",
-                "message" => $category->getMessage()
+                "message" => $order->getMessage()
             ]);
             return;
         }
 
         $this->back([
             "type" => "success",
-            "message" => "Categoria cadastrada com sucesso!"
+            "message" => "Pedido cadastrado com sucesso!"
         ]);
 
     }
-    public function listCategory(array $data)
+    public function listOrder(array $data)
     {
         
-        $category = new Category();
-        $listcategories = $category->listCategory($data);
-        $this->back($listcategories);
+        $order = new Order();
+        $listOrder = $order->listOrder($data);
+        $this->back($listOrder);
     }
     
     public function listById(array $data)
 {
-    $service = new Category();
-    $category = $service->getCategoryById($data["id"]);
-    $this->back($category);
+    $service = new Order();
+    $order = $service->getOrderById($data["id"]);
+    $this->back($order);
 }
-public function updateCategory(array $data): void
+public function updateOrder(array $data): void
 {
     $this->auth();
 
-    $service = new Category(
+    $service = new Order(
         $data["id"],
-        $data["name"]
+        $data["total"],
+        $data["quantity"],
+        $data["description"],
+        $data["users_id"]
     );
 
-    $category = $service->updateCategory();
+    $category = $service->updateOrder();
     if (!$category) {
         $this->back([
             "type" => "error",
@@ -82,22 +88,22 @@ public function updateCategory(array $data): void
 
     $this->back([
         "type" => "success",
-        "message" => "Categoria Atualizada com sucesso!"
+        "message" => "Pedido Atualizado com sucesso!"
     ]);
 }
 
 
-public function deleteCategory(array $data)
+public function deleteOrder(array $data)
 {
     $this->auth();
 
-    $service = new Category();
-    $success = $service->deleteCategory($data["id"]);
+    $service = new Order();
+    $success = $service->deleteOrder($data["id"]);
 
     if ($success) {
         echo json_encode([
             "success" => true,
-            "message" => "Categoria excluída com sucesso!"
+            "message" => "Pedido excluído com sucesso!"
         ]);
         return;
     } else {

@@ -21,7 +21,7 @@ formInsertProduct.addEventListener("submit", async (e) => {
     }).then((response) => {
         response.json().then((data) => {
             let response = data
-            showToast(`${response}`);
+            showToast(`Café cadastrado!`);
         });
     });
 
@@ -40,8 +40,26 @@ formInsertCategory.addEventListener("submit", async (e) => {
         }
     }).then((response) => {
         response.json().then((data) => {
-            let response = data
-            console.log(response)
+            showToast(`Nova Categoria cadastrada!`);
+        });
+    });
+
+});
+
+const formInsertOrder = document.querySelector("#form-insert-order")
+
+formInsertOrder.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    fetch(getBackendUrlApi("orders/insert"), {
+        method: "POST",
+        body: new FormData(formInsertOrder),
+        headers: {
+            token: userAuth.token
+        }
+    }).then((response) => {
+        response.json().then((data) => {
+            showToast(`Novo Pedido cadastrado!`);
         });
     });
 

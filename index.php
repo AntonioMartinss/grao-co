@@ -34,6 +34,7 @@ $route->get("/inicio", "Admin:home");
 $route->get("/editar-produto", "Admin:edit_product");
 $route->get("/editar-usuario", "Admin:edit_user");
 $route->get("/editar-categoria", "Admin:edit_category");
+$route->get("/editar-pedidos", "Admin:edit_order");
 $route->group(null);
 
 $route->get("/ops/{errcode}", "Web:error");

@@ -11,6 +11,7 @@ class Admin
     public function __construct()
     {
         $this->view = new Engine(__DIR__ . "/../../themes/adm", "php");
+        
     }
 
     public function home()
@@ -25,6 +26,7 @@ class Admin
     }
     public function edit_product()
     {
+        
         echo $this->view->render("edit_product", []);
     }
     public function edit_user()
@@ -34,6 +36,10 @@ class Admin
     public function edit_category()
     {
         echo $this->view->render("edit_category", []);
+    }
+    public function edit_order()
+    {
+        echo $this->view->render("edit_order", []);
     }
     
     

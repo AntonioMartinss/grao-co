@@ -92,7 +92,36 @@ import {
           });
         });
   
-  
+        document.querySelector(".formSearch").addEventListener("submit", (e) => {
+          e.preventDefault();
+          const categoryIdInput = document.querySelector('input[name="id"]');
+          const categoryId = categoryIdInput.value;
+        
+          fetch(getBackendUrlApi(`categories/list/${categoryId}`), {
+            method: 'GET'
+          }).then((response) => {
+            response.json().then((category) => {
+              if (category) {
+                const event = category[0]; 
+                document.querySelector("tbody").innerHTML = ` 
+                   <tr>
+              <td>${event.id}</td>
+              <td><input type="text" name="name" value="${event.name}" disabled></td>
+              <td><button class="edit-btn"><i class="fa-solid fa-pen" style="color: #ffffff;"></i></button></td>
+              <td><button class="delete-btn"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></td>
+            </tr>`;
+              } else {
+                document.querySelector(".message-category").innerHTML = `Categoria com ID ${categoryId} não encontrado.`;
+              }
+            });
+          });
+        });
+        
+        document.querySelector('input[name="id"]').addEventListener('input', (e) => {
+          if (e.target.value === '') {
+            location.reload();
+          }
+        });
       });
     });
   

@@ -48,17 +48,19 @@ $route->group("/categories");
 $route->get("/list","Categories:listCategory");
 $route->get("/list/{id}","Categories:listById");
 $route->post("/insert-category","Categories:insertCategory");
-$route->post("/update-category/{id}","Categories:updateCategory");
+$route->put("/update-category/{id}","Categories:updateCategory");
 $route->delete("/delete-category/{id}","Categories:deleteCategory");
-
-
 
 $route->group("null");
 
 
-$route->group("/admin");
+$route->group("/orders");
 
-$route->post("/","Admins:insert");
+$route->get("/list","Orders:listOrder");
+$route->get("/list/{id}","Orders:listById");
+$route->post("/insert","Orders:insertOrder");
+$route->put("/update-order/{id}","Orders:updateOrder");
+$route->delete("/delete-order/{id}","Orders:deleteOrder");
 
 $route->group("null");
 

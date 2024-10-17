@@ -18,6 +18,14 @@ $this->layout("_theme");
 
 <main>
     <div class="container">
+        <div class="container-search">
+            <form class="formSearch">
+                <h3>Não encontrou o produto? Pesquise aqui</h3>
+                <input type="number" name="product_id" placeholder="Digite o ID do produto a encontrar">
+                <input type="submit" value="Encontrar agora!">
+            </form>
+            <span class="message-product"></span>
+        </div>
         <div class="container-edit">
             <h2>Editar Produtos</h2>
         </div>
@@ -28,7 +36,7 @@ $this->layout("_theme");
                 </tbody>
             </table>
         </div>
-        <div class="toast-container" ></div>
+        <div class="toast-container"></div>
     </div>
 </main>
 
