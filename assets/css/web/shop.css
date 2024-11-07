@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+:root{
+
+    /* colors */
+    --background: #1A1A1A;
+    /* fonts */
+    --body-font-mono: "JetBrains Mono", monospace;
+    --body-font: "JetBrains", monospace;
+}
+html{
+    font-family: var(--body-font);
+    
+}
+
+  .product img{
+    display: block;
+    max-width: 200px;
+    max-height: 200px;
+  }
+  .product button{
+      width: auto;
+      height: auto;
+      background-color: var(--background);
+      border: none;
+      color: #fff;
+      margin: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      font-family: var(--body-font);
+      padding: 10px;
+  }
+  .product button:hover{
+    transition: background 0.3s ease;
+    background-color: red;
+    
+  }
+  .product-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.product {
+    display: flex;
+    width: calc(33.33% - 20px);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    align-items: center;
+    font-family: var(--body-font-mono);
+}
+
+
+@media (max-width: 768px) {
+    .product {
+        width: calc(50% - 20px); 
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        width: calc(100% - 20px); 
+    }
+}
+
+  main{
+    margin-top: 1em;
+    font-family: var(--body-font);
+  }

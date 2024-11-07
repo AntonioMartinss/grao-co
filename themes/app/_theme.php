@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="<?= url("assets/css/app/_theme.css"); ?>">
     <script src="https://kit.fontawesome.com/e9ad9d0028.js" crossorigin="anonymous"></script>
-    <script src="assets/js/app/_theme.js" async></script>
+ 
 </head>
 <body>
 <header>

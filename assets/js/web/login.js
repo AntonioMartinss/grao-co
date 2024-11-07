@@ -1,22 +1,28 @@
+import {
+  getBackendUrl,
+  getBackendUrlApi,
+  getFirstName,
+  showToast
+} from "./../_shared/functions.js";
+
+
 const formLogin = document.querySelector("#formLogin");
-
-formLogin.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  const response = await fetch('http://localhost/grao-co/api/users/login', {
-    method: 'POST',
-    body: new FormData(formLogin)
-  });
-
-    const result = await response.json();
-    console.log(result);
-
-    const token = result.user.token;
-
-    if (token) {
-      localStorage.setItem('token', token);
-      console.log('Logado, Salvo no LocalStorage.');
-    } else {
-      console.error('Falha no login: token não encontrado na resposta.');
-    }
-});
+formLogin.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    fetch(getBackendUrlApi("users/login"), {
+        method: "POST",
+        body: new FormData(formLogin)
+    }).then((response) => {
+        response.json().then((data) => {
+            if (data.type == "error") {
+                showToast(data.message);
+                return;
+            }
+            localStorage.setItem("userAuth", JSON.stringify(data.user));
+            showToast(`Olá, ${getFirstName(data.user.name)} como vai!`);
+            setTimeout(() => {
+                window.location.href = getBackendUrl("app/perfil");
+            }, 3000);
+        }) 
+    })
+  })

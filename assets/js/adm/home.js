@@ -9,6 +9,23 @@ import {
 
 const formInsertProduct = document.querySelector("#form-insert")
 
+
+const response = await fetch(getBackendUrlApi('categories/list'), {
+    method: "get"
+});
+
+const categories = await response.json(); 
+
+const selectCategories = document.querySelector("#categories_id");
+categories.forEach((category) => {
+    const option = document.createElement("option");
+    option.value = category.id;
+    option.textContent = category.name;
+    selectCategories.appendChild(option);
+});
+
+
+
 formInsertProduct.addEventListener("submit", async (e) => {
     e.preventDefault();
 

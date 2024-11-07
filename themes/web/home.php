@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="imagex/png" href="assets/images/web/favicon.png">
     <link rel="stylesheet" href="assets/css/web/home.css">
+    <script type="module" src="<?= url("assets/js/web/home.js"); ?>" async></script>
     <script src="https://kit.fontawesome.com/e9ad9d0028.js" crossorigin="anonymous"></script>
     <title>Grão & Co.</title>
 </head>
@@ -25,31 +26,7 @@
 
   <h6 class="h6">Nossos Produtos</h6>
  <div class="product-container">
-    <div class="product">
-        <img src="assets/images/web/noimage.png">
-        <h3>Produto 1</h3>
-        <p>Preço: R$ 20,00</p>
-        <button id="btnBuy">Comprar / Assinar</button>
-    </div>
-    <div class="product">
-        <img src="assets/images/web/noimage.png">
-        <h3>Produto 2</h3>
-        <p>Preço: R$ 20,00</p>
-        <button id="btnBuy">Comprar / Assinar</button>
-    </div>
-    <div class="product">
-        <img src="assets/images/web/noimage.png">
-        <h3>Produto 3</h3>
-        <p>Preço: R$ 20,00</p>
-        <button id="btnBuy">Comprar / Assinar</button>
-    </div>
-    <div class="product">
-        <img src="assets/images/web/noimage.png">
-        <h3>Produto 4</h3>
-        <p>Preço: R$ 20,00</p>
-        <button id="btnBuy">Comprar / Assinar</button>
-    </div>
-   
+   <!-- Produtos vindo do Banco de Dados -->
  </div>
 
   <main>

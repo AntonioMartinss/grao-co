@@ -27,6 +27,9 @@ $route->post("/login","Users:loginUser");
 $route->post("/admin","Users:loginAdmin");
 $route->put("/update","Users:updateUser");
 $route->get("/list", "Users:listUsers");
+$route->get("/me","Users:getUser");
+$route->post("/photo","Users:updatePhoto");
+$route->get("/photo","Users:getPhoto");
 $route->get("/list/{id}","Users:listById");
 $route->post("/set-password","Users:setPassword");
 

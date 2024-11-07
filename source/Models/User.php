@@ -6,13 +6,14 @@ use PDOException;
 use Source\Core\Connect;
 use Source\Core\Model;
 
+
 class User extends Model
 {
     private $id;
     private $name;
     private $email;
     private $password;
-    private $url;
+    private $photo;
     private $plans_id;
     private $usersCategories_id;
     private $message;
@@ -22,7 +23,7 @@ class User extends Model
         string $name = null,
         string $email = null,
         string $password = null,
-        string $url = null,
+        string $photo = null,
         int $plans_id = null,
         int $usersCategories_id = null
 
@@ -31,7 +32,7 @@ class User extends Model
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
-        $this->url = $url;
+        $this->photo = $photo;
         $this->plans_id = $plans_id;
         $this->usersCategories_id = $usersCategories_id;
         $this->entity = "users";
@@ -84,7 +85,6 @@ class User extends Model
     {
         $this->plans_id = $plans_id;
     }
-
     public function getCategoriesId(): ?int
     {
         return $this->plans_id;
@@ -98,7 +98,12 @@ class User extends Model
     {
         return $this->message;
     }
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
 
+    
     public function listUsers()
     {
         $query = "SELECT 
@@ -280,6 +285,7 @@ class User extends Model
             return false;
         }
     }
+    
 
     public function updatePassword(string $password, string $newPassword, string $confirmNewPassword): bool
     {
@@ -318,5 +324,37 @@ class User extends Model
             $this->message = "Erro ao atualizar: {$exception->getMessage()}";
             return false;
         }
+    }
+
+    public function updatePhoto (): bool
+    {
+        // selecionar o usuário, se tiver foto, apagar para gravar nova
+        $query = "SELECT photo FROM users WHERE id = :id";
+        $stmt = Connect::getInstance()->prepare($query);
+        $stmt->bindParam(":id", $this->id);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        // ser houver foto, apagar do diretório
+        if ($result->photo) {
+            unlink(__DIR__ . "/../../{$result->photo}");
+        }
+
+        $query = "UPDATE users 
+                  SET photo = :photo 
+                  WHERE id = :id";
+
+        $stmt = Connect::getInstance()->prepare($query);
+        $stmt->bindParam(":photo", $this->photo);
+        $stmt->bindParam(":id", $this->id);
+
+        try {
+            $stmt->execute();
+            $this->message = "Foto atualizada com sucesso!";
+            return true;
+        } catch (PDOException $exception) {
+            $this->message = "Erro ao atualizar: {$exception->getMessage()}";
+            return false;
+        }
+
     }
 }

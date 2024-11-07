@@ -53,36 +53,91 @@
             "install-path": "../coffeecode/router"
         },
         {
-            "name": "firebase/php-jwt",
-            "version": "v6.10.0",
-            "version_normalized": "6.10.0.0",
+            "name": "coffeecode/uploader",
+            "version": "2.0.4",
+            "version_normalized": "2.0.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "a49db6f0a5033aef5143295342f1c95521b075ff"
+                "url": "https://github.com/robsonvleite/uploader.git",
+                "reference": "4601ff1665a4591087c524239c1e545ba4834453"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/a49db6f0a5033aef5143295342f1c95521b075ff",
-                "reference": "a49db6f0a5033aef5143295342f1c95521b075ff",
+                "url": "https://api.github.com/repos/robsonvleite/uploader/zipball/4601ff1665a4591087c524239c1e545ba4834453",
+                "reference": "4601ff1665a4591087c524239c1e545ba4834453",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.4||^8.0"
+                "ext-exif": "*",
+                "ext-gd": "*",
+                "ext-mbstring": "*",
+                "php": ">=8.0"
+            },
+            "time": "2023-02-14T14:29:20+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "CoffeeCode\\Uploader\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robson V. Leite",
+                    "email": "cursos@upinside.com.br",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Tiago Chini",
+                    "email": "tiago.chini@hotmail.com",
+                    "role": "collaborator"
+                }
+            ],
+            "description": "It is a easy PHP upload manager for images, files and media in your application",
+            "homepage": "http://www.upinside.com.br",
+            "keywords": [
+                "Coffeecode",
+                "Image upload",
+                "file upload",
+                "media upload",
+                "upinside",
+                "upload"
+            ],
+            "support": {
+                "issues": "https://github.com/robsonvleite/uploader/issues",
+                "source": "https://github.com/robsonvleite/uploader/tree/2.0.4"
+            },
+            "install-path": "../coffeecode/uploader"
+        },
+        {
+            "name": "firebase/php-jwt",
+            "version": "v5.5.1",
+            "version_normalized": "5.5.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "83b609028194aa042ea33b5af2d41a7427de80e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/83b609028194aa042ea33b5af2d41a7427de80e6",
+                "reference": "83b609028194aa042ea33b5af2d41a7427de80e6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
             },
             "require-dev": {
-                "guzzlehttp/guzzle": "^6.5||^7.4",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.5",
-                "psr/cache": "^1.0||^2.0",
-                "psr/http-client": "^1.0",
-                "psr/http-factory": "^1.0"
+                "phpunit/phpunit": ">=4.8 <=9"
             },
             "suggest": {
-                "ext-sodium": "Support EdDSA (Ed25519) signatures",
                 "paragonie/sodium_compat": "Support EdDSA (Ed25519) signatures when libsodium is not present"
             },
-            "time": "2023-12-01T16:26:39+00:00",
+            "time": "2021-11-08T20:18:51+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -114,7 +169,7 @@
             ],
             "support": {
                 "issues": "https://github.com/firebase/php-jwt/issues",
-                "source": "https://github.com/firebase/php-jwt/tree/v6.10.0"
+                "source": "https://github.com/firebase/php-jwt/tree/v5.5.1"
             },
             "install-path": "../firebase/php-jwt"
         },

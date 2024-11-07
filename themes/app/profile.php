@@ -9,6 +9,7 @@ $this->layout("_theme");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= url("assets/css/app/profile.css"); ?>">
+    <script type="module" src="<?= url("assets/js/app/profile.js"); ?>"></script>
     <title>Perfil</title>
 </head>
 
@@ -17,23 +18,16 @@ $this->layout("_theme");
     <main>
         <div class="container-profile">
             <div class="photo">
-                <img src="<?= url("themes/app/assets/images/myiamoto.jpeg"); ?>" alt="">
-                <form class="new-photo">
-                    <input type="file" name="" id="">
-                    <input type="submit" value="Trocar imagem">
+                <img src="" alt="user-photo">
+            </div>
+                <form id="form-photo">
+                <input type="file" id="photo" name="photo">
+                <input type="submit" value="Atualizar Foto"></>
                 </form>
             </div>
             <div class="info">
                 <h2>Informações de usuário</h2>
-                <div class="container-info">
-                    <div class="edit-name">
-                        <input type="text" name="name" disabled placeholder="antonio">
-                        <button class="btn-edit"><i class="fa-solid fa-pen" style="color: #000000;"></i></button>
-                    </div>
-                    <div class="edit-email">
-                        <input type="text" name="email" disabled placeholder="antonio@gmail.com">
-                        <button class="btn-edit"><i class="fa-solid fa-pen" style="color: #000000;"></i></button>
-                    </div>
+                <div class="container-info"> 
                 </div>
 
             </div>
