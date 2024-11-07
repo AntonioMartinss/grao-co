@@ -27,7 +27,6 @@ $this->layout("_theme");
                     <input type="number" name="value" placeholder="Valor R$" required>
                     <input type="number" name="quantity" placeholder="Quantidade" required>
                     <textarea name="description" placeholder="Descrição do Produto" required></textarea>
-                    <input type="text" name="url" placeholder="URL da Imagem" required>
                     <select name="categories_id" id="categories_id" required>
                         <option disabled selected>Selecione a categoria</option>
                         

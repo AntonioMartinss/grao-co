@@ -24,7 +24,6 @@ fetch(getBackendUrlApi("products/list"))
             <td><input type="number" name="value" value="${event.value}" disabled></td>
             <td><input type="text" name="description" value="${event.description}" disabled></td>
             <td><input type="number" name="quantity" value="${event.quantity}" disabled></td>
-            <td><input type="text" name="url" value="${event.url}" disabled></td>
             <td><input type="number" name="categories_id" value="${event.categories_id}" disabled></td>
             <td><button class="edit-btn"><i class="fa-solid fa-pen" style="color: #ffffff;"></i></button></td>
             <td><button class="delete-btn"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></td>
@@ -130,7 +129,6 @@ fetch(getBackendUrlApi("products/list"))
                 <td><input type="number" name="value" value="${event.value}" disabled></td>
                 <td><input type="text" name="description" value="${event.description}" disabled></td>
                 <td><input type="number" name="quantity" value="${event.quantity}" disabled></td>
-                <td><input type="text" name="url" value="${event.url}" disabled></td>
                 <td><input type="number" name="categories_id" value="${event.categories_id}" disabled></td>
                 <td><button class="edit-btn"><i class="fa-solid fa-pen" style="color: #ffffff;"></i></button></td>
                 <td><button class="delete-btn"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></td>

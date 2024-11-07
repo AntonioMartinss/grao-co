@@ -61,6 +61,7 @@ formPhoto.addEventListener("submit", (e) => {
             document.querySelector("img").setAttribute("src", getBackendUrl(data.user.photo));
             userAuth.photo = data.user.photo;
             localStorage.setItem("userAuth", JSON.stringify(userAuth));
+            location.reload();
         });
     });
 });
