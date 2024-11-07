@@ -46,6 +46,16 @@ $route->delete("/delete-product/{id}","Products:deleteProduct");
 
 $route->group("null");
 
+$route->group("/images");
+
+$route->get("/list","Images:listProduct");
+$route->get("/list/{id}","Images:listById");
+$route->post("/insert","Images:insertPhoto");
+$route->put("/update-product/{id}","Images:updateProduct");
+$route->delete("/delete-product/{id}","Images:deleteProduct");
+
+$route->group("null");
+
 $route->group("/categories");
 
 $route->get("/list","Categories:listCategory");

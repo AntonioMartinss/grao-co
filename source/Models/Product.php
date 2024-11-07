@@ -13,7 +13,7 @@ class Product extends Model
     private $value;
     private $description;
     private $quantity;
-    private $url;
+    
     private $categories_id;
     private $message;
 
@@ -23,7 +23,7 @@ class Product extends Model
         float $value = null,
         string $description = null,
         int $quantity = null,
-        string $url = null,
+        
         int $categories_id = null,
 
     ) {
@@ -32,7 +32,7 @@ class Product extends Model
         $this->value = $value;
         $this->description = $description;
         $this->quantity = $quantity;
-        $this->url = $url;
+       
         $this->categories_id = $categories_id;
         $this->entity = "products";
     }
@@ -71,14 +71,7 @@ class Product extends Model
         return $this->quantity;
     }
 
-    public function setUrl(?string $url): void
-    {
-        $this->url = $url;
-    }
-    public function getUrl(): ?string
-    {
-        return $this->url;
-    }
+    
 
     public function setQuantity(?int $quantity): void
     {
@@ -115,7 +108,6 @@ class Product extends Model
                     products.description, 
                     products.value, 
                     products.quantity, 
-                    products.url, 
                     categories.name as 'category_name'
                   FROM products
                   INNER JOIN categories 
@@ -130,7 +122,7 @@ class Product extends Model
 
     public function listProduct()
     {
-        $query = "SELECT products.id, products.name, value, description, quantity, url, categories_id, categories.name AS category_name 
+        $query = "SELECT products.id, products.name, value, description, quantity, categories_id, categories.name AS category_name 
               FROM products 
               INNER JOIN categories ON products.categories_id = categories.id";
 
@@ -150,7 +142,6 @@ class Product extends Model
         $this->value = $json_data['value'];
         $this->quantity = $json_data['quantity'];
         $this->description = $json_data['description'];
-        $this->url = $json_data['url'];
         $this->categories_id = $json_data['categories_id'];
 
         $conn = Connect::getInstance();
@@ -171,7 +162,6 @@ class Product extends Model
                       value = :value, 
                       quantity = :quantity, 
                       description = :description, 
-                      url = :url, 
                       categories_id = :categories_id 
                   WHERE id = :id";
 
@@ -181,7 +171,6 @@ class Product extends Model
         $stmt->bindParam(":value", $this->value);
         $stmt->bindParam(":quantity", $this->quantity);
         $stmt->bindParam(":description", $this->description);
-        $stmt->bindParam(":url", $this->url);
         $stmt->bindParam(":categories_id", $this->categories_id);
 
         try {
@@ -245,15 +234,14 @@ class Product extends Model
             return false;
         }
 
-        $query = "INSERT INTO `products` (name, value, quantity, description,url, categories_id) 
-                  VALUES (:name, :value, :quantity, :description, :url, :categories_id)";
+        $query = "INSERT INTO `products` (name, value, quantity, description, categories_id) 
+                  VALUES (:name, :value, :quantity, :description, :categories_id)";
 
         $stmt = $conn->prepare($query);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":value", $this->value);
         $stmt->bindParam(":quantity", $this->quantity);
         $stmt->bindParam(":description", $this->description);
-        $stmt->bindParam(":url", $this->url);
         $stmt->bindParam(":categories_id", $this->categories_id);
 
         try {

@@ -31,8 +31,7 @@ class Products extends Api
             $data["name"],
             $data["value"],
             $data["description"],
-            $data["quantity"],
-            $data["url"],            
+            $data["quantity"],           
             $data["categories_id"]
         );
 
@@ -76,7 +75,6 @@ class Products extends Api
             $data["value"],
             $data["description"],
             $data["quantity"],
-            $data["url"],
             $data["categories_id"]
         );
         
