@@ -166,7 +166,6 @@ document.querySelector(".container-table").innerHTML = `
 <th>Valor</th>
 <th>Descrição</th>
 <th>Quantidade</th>
-<th>URL</th>
 <th>Categoria</th>
 
 </tr>

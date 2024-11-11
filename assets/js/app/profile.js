@@ -19,7 +19,7 @@ fetch(getBackendUrlApi("users/me"), {
     response.json().then((data) => {
         if (data.error) {
             setTimeout(() => {
-                window.location.href = getBackendUrl();
+                window.location.href = getBackendUrl("entrar");
             }, 3000);
         }
 

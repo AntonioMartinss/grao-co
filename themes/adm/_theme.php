@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="<?= url("assets/css/adm/_theme.css"); ?>">
     <script src="https://kit.fontawesome.com/e9ad9d0028.js" crossorigin="anonymous"></script>
+    <script type="module" src="<?= url("assets/js/adm/_theme.js"); ?>"></script>
+
 </head>
 
 <body>
