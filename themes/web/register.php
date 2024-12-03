@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/web/register.css">
-    <script src="assets/js/web/register.js" async></script>
+    <script type="module" src="<?= url("assets/js/web/register.js"); ?>" async></script>
     <title>Cadastro</title>
 </head>
 <body>
@@ -22,7 +22,8 @@
                     <input type="password" name="password" placeholder="Senha">
                     <input type="submit" value="Criar conta" />
                         <a href="<?= url("entrar")?>"><span>Já é cliente? Clique aqui. <i class="fa-solid fa-up-right-from-square" style="color: #1a1a1a;"></i></span></a>
-                </form>
+                        <div class="toast-container"></div>
+                    </form>
                 
             </div>
             

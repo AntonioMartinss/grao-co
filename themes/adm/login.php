@@ -39,9 +39,11 @@
             <input type="email" name="email"  placeholder="E-mail">
             <input type="password" name="password"  placeholder="Senha">
             <input type="submit" value="Entrar">
+            <div class="toast-container" ></div>
         </form>
-        <div class="toast-container" ></div>
+        
     </main>
+
 </body>
 
 </html>

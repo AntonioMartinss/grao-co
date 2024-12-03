@@ -30,8 +30,9 @@
                     <input type="password" name="password" placeholder="Senha">
                     <input type="submit" value="Entrar" />
                         <a href="<?= url("cadastro")?>"><span>Novo aqui? Cadastre-se. <i class="fa-solid fa-up-right-from-square" style="color: #1a1a1a;"></i></span></a>
-                </form>
-                <div class="toast-container"></div>
+                        <div class="toast-container"></div>
+                    </form>
+                
             </div>
            
         </div>

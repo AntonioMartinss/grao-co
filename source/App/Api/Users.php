@@ -99,6 +99,14 @@ class Users extends Api
     public function loginUser (array $data) {
         $user = new User();
 
+        if(in_array("", $data)) {
+            $this->back([
+                "type" => "warning",
+                "message" => "Preencha todos os campos"
+            ]);
+            return;
+        };
+
         if(!$user->login($data["email"],$data["password"])){
             $this->back([
                 "type" => "error",
@@ -126,6 +134,14 @@ class Users extends Api
     public function loginAdmin (array $data)
     {
         $user = new User();
+
+        if(in_array("", $data)) {
+            $this->back([
+                "type" => "warning",
+                "message" => "Preencha todos os campos"
+            ]);
+            return;
+        };
 
         if(!$user->loginAdmin($data["email"],$data["password"])){
             $this->back([

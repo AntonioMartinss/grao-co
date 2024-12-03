@@ -1,13 +1,26 @@
 import {
+    HttpUser
+  } from '../classes/HttpUser.js';
+  
+  import {
+    getBackendUrl,
     getBackendUrlApi,
     getFirstName,
     showToast
-} from "./../_shared/functions.js";
-
+  } from "./../_shared/functions.js";
+  
 import {
     userAuth
 } from "./../_shared/globals.js";
 
+const api = new HttpUser();
+
+try {
+    const listUsers = await api.list();
+    renderUsers(listUsers);
+} catch (error) {
+    console.error('Erro na requisição:', error);
+}
 
 fetch(getBackendUrlApi("users/list"))
     .then((response) => {
