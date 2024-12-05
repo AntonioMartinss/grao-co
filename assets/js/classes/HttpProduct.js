@@ -1,6 +1,6 @@
 import HttpClientBase from './HttpClientBase.js';
 
-export class HttpService extends HttpClientBase {
+export class HttpProduct extends HttpClientBase {
     constructor() {
         super(`http://localhost/grao-co/api/products`);
     }
@@ -14,32 +14,11 @@ export class HttpService extends HttpClientBase {
     async insert(data) {
         return this.post('/insert', data);
     }
-    async updateProduct(id) {
-        return this.put('/update-product/:id', { id: id });
+    async updateProduct(productId ,data) {
+        return this.put(`/update-product/${productId}`, data);
     }
-    async deleteProduct(id) {
-        return this.put('/delete-product/:id', { id: id });
-    }
-
-
-// async getServicesByName(serviceName) {
-    //     //console.log()
-    //     return this.get(`/list-by-name/name/:name`,serviceName);
-    // }
-
-    // async getServicesByCategory(category_id) {
-    //     return this.get('/list-by-category/category/:id', {id: category_id});
-    // }
-    /*
-
-    async deleteService(serviceId) {
-        return this.delete(`/services/${serviceId}`);
+    async deleteProduct(productId){
+        return this.delete(`/delete-product/:id`, {id: productId});
     }
 
-    // Exemplo com FormData
-    async uploadServiceImage(serviceId, imageFile) {
-        const formData = new FormData();
-        formData.append('image', imageFile);
-        return this.post(`/services/${serviceId}/image`, formData);
-    }*/
 }

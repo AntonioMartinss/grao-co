@@ -67,7 +67,7 @@ class Products extends Api
 
     public function updateProduct(array $data) : void
     {
-        $this->auth();
+        //$this->auth();
 
         $service = new Product(
             $data["id"],
@@ -95,7 +95,7 @@ class Products extends Api
 
     public function deleteProduct(array $data)
     {
-        $this->auth();
+       // $this->auth();
 
         $service = new Product();
         $success = $service->deleteProduct($data["id"]);

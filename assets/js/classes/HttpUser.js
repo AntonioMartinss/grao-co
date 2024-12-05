@@ -15,7 +15,10 @@ export class HttpUser extends HttpClientBase {
         return this.post('/admin', data);
     }
     async list(data) {
-        return this.post('/list', data);
+        return this.get('/list', data);
+    }
+    async me(data) {
+        return this.get('/me', data);
     }
 
 

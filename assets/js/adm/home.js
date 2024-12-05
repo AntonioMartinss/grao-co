@@ -1,4 +1,11 @@
 import {
+    HttpProduct
+  } from '../classes/HttpProduct.js';
+  import {
+    HttpUser
+  } from '../classes/HttpUser.js';
+  
+import {
     showDataForm,
     getBackendUrlApi, getBackendUrl, showToast
 } from "./../_shared/functions.js";
@@ -6,6 +13,8 @@ import {
 import {
     userAuth
 } from "./../_shared/globals.js";
+
+const apiProduct = new HttpProduct();
 
 const formInsertProduct = document.querySelector("#form-insert")
 
@@ -29,26 +38,22 @@ categories.forEach((category) => {
 formInsertProduct.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    fetch(getBackendUrlApi("products/insert"), {
-        method: "POST",
-        body: new FormData(formInsertProduct),
-        headers: {
-            token: userAuth.token
+    try {
+        const products = await apiProduct.insert(new FormData(formInsertProduct));
+        if(products){
+            console.log(products)
+            let response = products
+            showToast(`${response.message}!`);
+        }else{
+            showToast(`${response.message}!`);
         }
-    }).then((response) => {
-        response.json().then((data) => {
-            if(data){
-                console.log(data)
-                let response = data
-                showToast(`${response.message}!`);
-            }else{
-                showToast(`${response.message}!`);
-            }
+    } catch (error) {
+        console.error('Erro na requisição:', error);
+    }
+            
             
         });
-    });
-
-});
+    
 
 const formInsertCategory = document.querySelector("#form-insert-category")
 
