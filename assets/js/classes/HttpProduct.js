@@ -15,6 +15,7 @@ export class HttpProduct extends HttpClientBase {
         return this.post('/insert', data);
     }
     async updateProduct(productId ,data) {
+        console.log(data)
         return this.put(`/update-product/${productId}`, data);
     }
     async deleteProduct(productId){

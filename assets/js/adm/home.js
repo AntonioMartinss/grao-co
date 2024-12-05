@@ -34,18 +34,16 @@ categories.forEach((category) => {
 });
 
 
-
 formInsertProduct.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     try {
         const products = await apiProduct.insert(new FormData(formInsertProduct));
-        if(products){
+        if(products.type == "error" || products.type == "warning"){
             console.log(products)
-            let response = products
-            showToast(`${response.message}!`);
+            showToast(products.message, products.type);
         }else{
-            showToast(`${response.message}!`);
+            showToast(products.message, products.type);
         }
     } catch (error) {
         console.error('Erro na requisição:', error);

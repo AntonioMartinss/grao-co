@@ -41,11 +41,11 @@ export function showToast(message, type) {
     toast.style.backgroundColor = '#1A1A1A';
     toast.style.borderRadius = '10px';
 
-    if (type === "warning") {
+    if (type == "warning") {
         toast.style.color = 'yellow';
-    } else if (type === "success") {
+    } else if (type == "success") {
         toast.style.color = 'green';
-    } else if (type === "error") {
+    } else if (type == "error") {
         toast.style.color = 'red';
     }
 

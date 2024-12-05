@@ -23,11 +23,11 @@ $this->layout("_theme");
 
                 <form id="form-insert">
                     <h2>Cadastro de Produtos</h2>
-                    <input type="text" name="name" placeholder="Nome do Produto" required>
-                    <input type="number" name="value" placeholder="Valor R$" required>
-                    <input type="number" name="quantity" placeholder="Quantidade" required>
-                    <textarea name="description" placeholder="Descrição do Produto" required></textarea>
-                    <select name="categories_id" id="categories_id" required>
+                    <input type="text" name="name" placeholder="Nome do Produto" >
+                    <input type="number" name="value" placeholder="Valor R$" >
+                    <input type="number" name="quantity" placeholder="Quantidade" >
+                    <textarea name="description" placeholder="Descrição do Produto" ></textarea>
+                    <select name="categories_id" id="categories_id" >
                         <option disabled selected>Selecione a categoria</option>
                         
                     </select>

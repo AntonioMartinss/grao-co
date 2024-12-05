@@ -16,11 +16,11 @@ class Products extends Api
 
     public function insertProduct(array $data)
     {
-        $this->auth();
+       // $this->auth();
 
         if (in_array("", $data)) {
             $this->back([
-                "type" => "error",
+                "type" => "warning",
                 "message" => "Preencha todos os campos"
             ]);
             return;

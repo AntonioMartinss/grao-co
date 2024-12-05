@@ -61,7 +61,7 @@ function renderProduct(listProducts) {
   });
 
   document.querySelectorAll(".edit-btn").forEach((btnEdit) => {
-    btnEdit.addEventListener("click",async () => {
+    btnEdit.addEventListener("click", async () => {
       const inputs = btnEdit.parentElement.parentElement.querySelectorAll('input');
       const productId = btnEdit.parentElement.parentElement.querySelector('td:first-child').textContent;
 
@@ -83,28 +83,29 @@ function renderProduct(listProducts) {
           description: inputs[2].value,
           quantity: inputs[3].value,
           url: inputs[4].value,
-          categories_id: inputs[5].value
+          //categories_id: inputs[5].value
         };
 
         inputs.forEach(input => {
           update[input.name] = input.value;
         });
-        const formData = new FormData(update);
         try {
-          const product = await api.updateProduct(formData);
-          if (product.success) {
+          const product = await api.updateProduct(productId, update);
+
+          if (product.type == "error" || product.type == "warning") {
+            console.log(product)
+            showToast(product.message, product.type);
+          } else {
             inputs.forEach(input => {
               input.disabled = true;
             });
-            showToast(`${product.message}!`);
-          } else {
-            showToast(`${product.message}!`);
-
+            showToast(product.message, product.type);
           }
+
         } catch (error) {
           console.error('Erro na requisição:', error);
         }
-          
+
       }
     });
   });
@@ -115,12 +116,11 @@ function renderProduct(listProducts) {
 
       try {
         const product = await api.deleteProduct(productId);
-        if (product) {
+        if (product.type == "error" || product.type == "warning") {
           console.log(product)
-          let response = product;
-          showToast(`${response.message}!`);
+          showToast(product.message, product.type);
         } else {
-          showToast(`${response.message}!`);
+          showToast(product.message, product.type);
         }
       } catch (error) {
         console.error('Erro na requisição:', error);
