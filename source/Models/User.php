@@ -360,4 +360,35 @@ class User extends Model
         }
 
     }
+
+    public function delete(int $id): bool
+    {
+        $conn = Connect::getInstance();
+    
+        // Verifica se o usuário existe
+        $checkQuery = "SELECT id FROM users WHERE id = :id";
+        $checkStmt = $conn->prepare($checkQuery);
+        $checkStmt->bindParam(":id", $id);
+        $checkStmt->execute();
+    
+        if ($checkStmt->rowCount() === 0) {
+            $this->message = "Usuário não encontrado.";
+            return false;
+        }
+    
+        // Deleta o usuário
+        $query = "DELETE FROM users WHERE id = :id";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(":id", $id);
+    
+        try {
+            $stmt->execute();
+            $this->message = "Usuário excluído com sucesso.";
+            return true;
+        } catch (PDOException $e) {
+            $this->message = "Erro ao excluir o usuário: " . $e->getMessage();
+            return false;
+        }
+    }
+    
 }

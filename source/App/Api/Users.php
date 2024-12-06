@@ -176,7 +176,7 @@ class Users extends Api
             $data["name"],
             $data["email"]
         );
-        
+
         if(in_array("", $data)) {
             $this->back([
                 "type" => "warning",
@@ -247,6 +247,28 @@ class Users extends Api
         ]);
 
     }
-
+    public function deleteUser(array $data)
+    {
+        // Autenticação, se necessário
+        //$this->auth();
+    
+        $service = new User();
+        $success = $service->delete($data["id"]);
+    
+        if (!$success) {
+            error_log("Erro ao deletar usuário: " . $service->getMessage());
+            $this->back([
+                "type" => "error",
+                "message" => $service->getMessage()
+            ]);
+            return;
+        }
+    
+        error_log("Usuário excluído com sucesso. ID: " . $data["id"]);
+        $this->back([
+            "type" => "success",
+            "message" => "Usuário excluído com sucesso!"
+        ]);
+    }
     
 }

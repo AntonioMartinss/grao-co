@@ -23,6 +23,9 @@ export class HttpUser extends HttpClientBase {
     async update(userId,data) {
         return this.put(`/update/${userId}`, data);
     }
+    async delete(userId){
+        return this.delete(`/delete/:id`, {id: userId});
+    }
 
 
 

@@ -6,8 +6,8 @@ import {
 } from "./../_shared/functions.js";
 import {
     HttpUser
-  } from '../classes/HttpUser.js';
-  
+} from '../classes/HttpUser.js';
+
 import {
     userAuth
 } from "./../_shared/globals.js";
@@ -35,32 +35,62 @@ fetch(getBackendUrlApi("users/me"), {
                     <input type="submit" value="Atualizar conta" />
                         <div class="toast-container"></div>
                     </form>
+
+                <button id="delete-btn">Deletar usuário</button>
         `;
         document.querySelector("img").setAttribute("src", getBackendUrl(data.user.photo));
-    
 
-    const formUpdate = document.querySelector("#formUpdate");
-    formUpdate.addEventListener("submit", async (e)=>{
-        e.preventDefault();
-        const userId = data.user.id;
+        const deleteBtn = document.querySelector("#delete-btn");
+        deleteBtn.addEventListener("click", async (e)=>{
+            e.preventDefault()
+            const userId = data.user.id;
+            try {
+                const product = await api.delete(userId);
         
-        const formData = new FormData(formUpdate);
+                if (product.type == "error" || product.type == "warning") {
+                  console.log(product)
+                  showToast(product.message, product.type);
+                } else {
+                  showToast(product.message, product.type);
+                  localStorage.removeItem("userAuth", JSON.stringify(data.user));
+                  window.location.href = getBackendUrl("entrar");
+                }
+        
+              } catch (error) {
+                console.error('Erro na requisição:', error);
+              }
+        
+        })
 
-        try {
-            const user = await api.update(userId,formData);
-            if (user.type == "error" || user.type == "warning") {
-              showToast(user.message, user.type);
-            } else {
-              showToast(user.message, user.type);
-             
+
+        const formUpdate = document.querySelector("#formUpdate");
+        formUpdate.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const userId = data.user.id;
+
+            const formData = new FormData(formUpdate);
+
+            try {
+                const user = await api.update(userId, formData);
+                if (user.type == "error" || user.type == "warning") {
+                    showToast(user.message, user.type);
+                } else {
+                    showToast(user.message, user.type);
+
+                }
+            } catch (error) {
+                console.error('Erro na requisição:', error);
             }
-          } catch (error) {
-            console.error('Erro na requisição:', error);
-          }
-    })
+
+        })
+
+
+
+
+    });
 
 });
-});
+
 
 const formPhoto = document.querySelector("#form-photo");
 formPhoto.addEventListener("submit", (e) => {
