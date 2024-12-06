@@ -25,7 +25,7 @@ $route->group("/users");
 $route->post("/","Users:createUser");
 $route->post("/login","Users:loginUser");
 $route->post("/admin","Users:loginAdmin");
-$route->put("/update","Users:updateUser");
+$route->put("/update/{id}","Users:updateUser");
 $route->get("/list", "Users:listUsers");
 $route->get("/me","Users:getUser");
 $route->post("/photo","Users:updatePhoto");

@@ -251,6 +251,7 @@ class User extends Model
     {
         $conn = Connect::getInstance();
 
+
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $this->message = "E-mail inválido!";
             return false;
@@ -268,8 +269,10 @@ class User extends Model
         }
 
         $query = "UPDATE users 
-                  SET name = :name, email = :email 
-                  WHERE id = :id";
+        SET name = :name, 
+            email = :email
+        WHERE id = :id";
+
 
         $stmt = $conn->prepare($query);
         $stmt->bindParam(":name", $this->name);

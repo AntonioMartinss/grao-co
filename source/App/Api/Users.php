@@ -171,25 +171,19 @@ class Users extends Api
     public function updateUser(array $data)
     {
 
-        echo json_encode($data);
-        exit;
-
-        if(!$this->userAuth){
+        $user = new User(
+            $data["id"],
+            $data["name"],
+            $data["email"]
+        );
+        
+        if(in_array("", $data)) {
             $this->back([
-                "type" => "error",
-                "message" => "Você não pode estar aqui.."
+                "type" => "warning",
+                "message" => "Preencha todos os campos"
             ]);
             return;
-        }
-
-        $user = new User(
-            $this->userAuth->id,
-            $data["name"],
-            $data["email"],
-            $data["password"],
-            $data["plans_id"]
-        );
-
+        };
         if(!$user->update()){
             $this->back([
                 "type" => "error",

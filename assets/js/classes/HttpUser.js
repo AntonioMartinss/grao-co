@@ -19,7 +19,11 @@ export class HttpUser extends HttpClientBase {
     }
     async me(data) {
         return this.get('/me', data);
+    } 
+    async update(userId,data) {
+        return this.put(`/update/${userId}`, data);
     }
+
 
 
 }

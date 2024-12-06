@@ -13,7 +13,6 @@ class Product extends Model
     private $value;
     private $description;
     private $quantity;
-    
     private $categories_id;
     private $message;
 

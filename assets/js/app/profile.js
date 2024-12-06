@@ -4,11 +4,15 @@ import {
     getFirstName,
     showToast
 } from "./../_shared/functions.js";
-
+import {
+    HttpUser
+  } from '../classes/HttpUser.js';
+  
 import {
     userAuth
 } from "./../_shared/globals.js";
 
+const api = new HttpUser();
 
 fetch(getBackendUrlApi("users/me"), {
     method: "GET",
@@ -23,21 +27,39 @@ fetch(getBackendUrlApi("users/me"), {
             }, 3000);
         }
 
-        
+
         document.querySelector(".container-info").innerHTML = `
-         <div class="edit-name">
-            <input type="text" name="name" disabled placeholder="${data.user.name}">
-                <button class="btn-edit"><i class="fa-solid fa-pen" style="color: #000000;"></i></button>
-        </div>
-        <div class="edit-email">
-            <input type="text" name="email" disabled placeholder="${data.user.email}">
-                <button class="btn-edit"><i class="fa-solid fa-pen" style="color: #000000;"></i></button>
-        </div>
+         <form id="formUpdate">
+                    <input type="name" name="name" value="${data.user.name}" placeholder="Novo nome - ${data.user.name}"/> 
+                    <input type="email" name="email" value="${data.user.email}" placeholder="Novo email" />
+                    <input type="submit" value="Atualizar conta" />
+                        <div class="toast-container"></div>
+                    </form>
         `;
         document.querySelector("img").setAttribute("src", getBackendUrl(data.user.photo));
-    });
     
-    
+
+    const formUpdate = document.querySelector("#formUpdate");
+    formUpdate.addEventListener("submit", async (e)=>{
+        e.preventDefault();
+        const userId = data.user.id;
+        
+        const formData = new FormData(formUpdate);
+
+        try {
+            const user = await api.update(userId,formData);
+            if (user.type == "error" || user.type == "warning") {
+              showToast(user.message, user.type);
+            } else {
+              showToast(user.message, user.type);
+             
+            }
+          } catch (error) {
+            console.error('Erro na requisição:', error);
+          }
+    })
+
+});
 });
 
 const formPhoto = document.querySelector("#form-photo");
@@ -50,14 +72,14 @@ formPhoto.addEventListener("submit", (e) => {
             token: userAuth.token
         }
     }).then((response) => {
-       
+
         response.json().then((data) => {
-            if(data.error) {
+            if (data.error) {
                 console.log(data.error.message);
                 return;
             }
             console.log("Foto atualizada com sucesso!");
-           
+
             document.querySelector("img").setAttribute("src", getBackendUrl(data.user.photo));
             userAuth.photo = data.user.photo;
             localStorage.setItem("userAuth", JSON.stringify(userAuth));
