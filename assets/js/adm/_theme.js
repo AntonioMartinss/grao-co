@@ -10,19 +10,21 @@ import {
 } from "./../_shared/globals.js";
 
 
-fetch(getBackendUrlApi("users/me"), {
-    method: "GET",
-    headers: {
-        token: userAuth.token
-    }
-}).then((response) => {
-    response.json().then((data) => {
-        if (data.error) {
-            setTimeout(() => {
-                window.location.href = getBackendUrl("entrar");
-            });
+if (!userAuth) {
+    window.location.href = getBackendUrl("entrar");
+} else {
+    fetch(getBackendUrlApi("users/me"), {
+        method: "GET",
+        headers: {
+            token: userAuth.token
         }
+    }).then((response) => {
+        response.json().then((data) => {
+            if (data.error) {
+                setTimeout(() => {
+                    window.location.href = getBackendUrl("entrar");
+                });
+            }
+        });
     });
-    
-    
-});
+}

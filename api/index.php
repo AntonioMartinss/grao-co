@@ -31,8 +31,6 @@ $route->get("/me","Users:getUser");
 $route->post("/photo","Users:updatePhoto");
 $route->get("/photo","Users:getPhoto");
 $route->get("/list/{id}","Users:listById");
-$route->post("/set-password","Users:setPassword");
-$route->delete("/delete/{id}","Users:deleteUser");
 
 $route->group("null");
 

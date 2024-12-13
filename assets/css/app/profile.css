@@ -132,7 +132,7 @@ form input[type="submit"]{
     font-family: var(--body-font);
 }
 button{
-    background-color: red;
+    background-color: #1A1A1A;
     padding: 10px;
     border: none;
     border-radius: 10px;

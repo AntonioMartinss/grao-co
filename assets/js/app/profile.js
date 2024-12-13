@@ -36,30 +36,15 @@ fetch(getBackendUrlApi("users/me"), {
                         <div class="toast-container"></div>
                     </form>
 
-                <button id="delete-btn">Deletar usuário</button>
+                <button id="logout-btn">Sair agora</button>
         `;
         document.querySelector("img").setAttribute("src", getBackendUrl(data.user.photo));
 
-        const deleteBtn = document.querySelector("#delete-btn");
-        deleteBtn.addEventListener("click", async (e)=>{
+        const LogoutBtn = document.querySelector("#logout-btn");
+        LogoutBtn.addEventListener("click", async (e)=>{
             e.preventDefault()
-            const userId = data.user.id;
-            try {
-                const product = await api.delete(userId);
-        
-                if (product.type == "error" || product.type == "warning") {
-                  console.log(product)
-                  showToast(product.message, product.type);
-                } else {
-                  showToast(product.message, product.type);
-                  localStorage.removeItem("userAuth", JSON.stringify(data.user));
-                  window.location.href = getBackendUrl("entrar");
-                }
-        
-              } catch (error) {
-                console.error('Erro na requisição:', error);
-              }
-        
+            localStorage.removeItem("userAuth");
+            window.location.href = getBackendUrl("entrar");
         })
 
 

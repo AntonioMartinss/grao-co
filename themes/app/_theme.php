@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="<?= url("assets/css/app/_theme.css"); ?>">
     <script src="https://kit.fontawesome.com/e9ad9d0028.js" crossorigin="anonymous"></script>
+    <script type="module" src="<?= url("assets/js/app/_theme.js"); ?>"></script>
  
 </head>
 <body>
@@ -37,7 +38,7 @@
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="<?= url("themes/app/assets/images/logo.svg"); ?>" alt="Logo">
+                    <img src="<?= url("assets/images/web/logo.svg"); ?>" alt="Logo">
                 </div>
                 <div class="">
                   <p>Descubra o mundo em uma xícara.</p>

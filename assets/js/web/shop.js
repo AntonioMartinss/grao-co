@@ -16,7 +16,7 @@ fetch(getBackendUrlApi("products/list"))
             products.forEach((product) => {
                 document.querySelector(".product-container").innerHTML += `
         <div class="product">
-        <img src="${product.url}">
+        <img src="${product.path}">
         <h3>${product.name}</h3>
         <p style="
         color: #333;

@@ -121,9 +121,11 @@ class Product extends Model
 
     public function listProduct()
     {
-        $query = "SELECT products.id, products.name, value, description, quantity, categories_id, categories.name AS category_name 
-              FROM products 
-              INNER JOIN categories ON products.categories_id = categories.id";
+        $query = "SELECT products.id, products.name, value, description, quantity, categories_id, categories.name AS category_name, images.path 
+          FROM products 
+          INNER JOIN categories ON products.categories_id = categories.id
+          LEFT JOIN images ON images.products_id = products.id";
+
 
         $conn = Connect::getInstance();
         $stmt = $conn->prepare($query);
