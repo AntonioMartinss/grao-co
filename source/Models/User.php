@@ -205,13 +205,9 @@ class User extends Model
         $this->setName($result->name);
         $this->setEmail($result->email);
 
-        // $this->message = "Usuário logado com sucesso!";
+         $this->message = "Usuário logado com sucesso!";
 
-        session_start();
-
-        $_SESSION['id'] = $result->id;
-        $_SESSION['name'] = $result->name;
-        $_SESSION['email'] = $result->email;
+      
 
         return true;
     }

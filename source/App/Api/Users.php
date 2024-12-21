@@ -104,14 +104,17 @@ class Users extends Api
                 "type" => "warning",
                 "message" => "Preencha todos os campos"
             ]);
+            http_response_code(400);
             return;
         };
 
         if(!$user->login($data["email"],$data["password"])){
             $this->back([
+            
                 "type" => "error",
                 "message" => $user->getMessage()
             ]);
+            http_response_code(401);
             return;
         }
         $token = new TokenJWT();

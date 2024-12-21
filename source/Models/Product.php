@@ -107,11 +107,15 @@ class Product extends Model
                     products.description, 
                     products.value, 
                     products.quantity, 
-                    categories.name as 'category_name'
+                    categories.name as 'category_name',
+                    images.path
                   FROM products
                   INNER JOIN categories 
                   ON products.categories_id = categories.id
+                  LEFT JOIN images 
+                  ON images.products_id = products.id
                   WHERE products.id = :product_id";
+
         $conn = Connect::getInstance();
         $stmt = $conn->prepare($query);
         $stmt->bindParam(":product_id", $id);
