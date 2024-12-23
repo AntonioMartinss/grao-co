@@ -105,6 +105,7 @@ class Products extends Api
                 "type" => "error",
                 "message" => $service->getMessage()
             ]);
+            http_response_code(400);
             return;
         }
 

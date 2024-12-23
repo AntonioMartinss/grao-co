@@ -206,12 +206,16 @@ class Product extends Model
             $this->message = "Produto não encontrado.";
             return false;
         }
+        $queryImage = "DELETE FROM images WHERE products_id = :id";
+        $checkImageStmt = $conn->prepare($queryImage);
+        $checkImageStmt->bindParam(":id", $id);
 
         $query = "DELETE FROM products WHERE id = :id";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(":id", $id);
 
         try {
+            $checkImageStmt->execute();
             $stmt->execute();
             $this->message = "Produto Excluido com sucesso ";
             return true;
